@@ -10,15 +10,15 @@ services:
     ports:
       - 8001:8000
     environment:
-      - API_PUBLIC_URL=http://localhost:8000
-      - API_INTERNAL_URL=http://api:8000
+      - API_PUBLIC_URL=http://172.20.0.6:8000
+      - API_INTERNAL_URL=http://172.20.0.6:8000
       - DJANGO_DEBUG=True
       - TEST=False
       - NODE_ENV=dev
     networks:
-      - eusko_net
+      - mlc_net
 
 networks:
-  eusko_net:
+  mlc_net:
     external:
-      name: api_eusko_net
+      name: api_mvt_sol_mlc_net
