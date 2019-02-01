@@ -38,7 +38,7 @@ class Manager extends React.Component {
             <div className="col-md-10">
                 <StockBillets data={this.state.stockBilletsData} />
                 <CaisseEuro data={this.state.caisseEuroData} />
-                <CaisseEusko data={this.state.caisseEuskoData} />
+                {/*<CaisseEusko data={this.state.caisseEuskoData} />*/}
                 <RetourEusko data={this.state.retourEuskoData} />
             </div>
         )
@@ -64,7 +64,7 @@ var StockBillets = React.createClass({
         return (
             <div className="panel panel-info">
                 <div className="panel-heading">
-                    <h3 className="panel-title">{__("Stock de billets — Eusko disponibles pour le change")}</h3>
+                    <h3 className="panel-title">{__("Stock de billets — Eusko disponibles pour le change (conversions + retraits de compte numérique)")}</h3>
                 </div>
                 <div className="panel-body">
                     <div className="row">
@@ -185,7 +185,8 @@ var CaisseEuro = React.createClass({
         return (
             <div className="panel panel-info">
                 <div className="panel-heading">
-                    <h3 className="panel-title">{__("Caisse € — Euros des changes et cotisations")}</h3>
+                {/*  <h3 className="panel-title">{__("Caisse € — Euros des changes et cotisations")}</h3> */}
+                    <h3 className="panel-title">{__("Caisse € — Euros des changes")}</h3>
                 </div>
                 <div className="panel-body">
                     <div className="row">
@@ -223,7 +224,7 @@ var CaisseEuro = React.createClass({
     }
 })
 
-var CaisseEusko = React.createClass({
+{/* var CaisseEusko = React.createClass({
     getInitialState() {
         return {
             balance: '',
@@ -263,7 +264,7 @@ var CaisseEusko = React.createClass({
             </div>
         )
     }
-})
+}) */}
 {/* Dépôts d'Eusko sur un compte numérique */}
 var RetourEusko = React.createClass({
     getInitialState() {
