@@ -112,10 +112,11 @@ const MemberShow = React.createClass({
                             {' '}
                             {changeNumerique}
                             {' '}
+                            {/* @WARNING : RECONVERSION skipped for now
                             <a href={"/members/reconversion/" + this.state.member.id}
                                className="btn btn-info col-sm-offset-1">
                                {__("Reconversion")}
-                            </a>
+                            </a> */}
                         </div>
                         <div className="row member-show-div-margin-left margin-top">
                             {memberActionDepotCompte}

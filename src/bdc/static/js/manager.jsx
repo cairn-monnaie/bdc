@@ -264,7 +264,7 @@ var CaisseEusko = React.createClass({
         )
     }
 })
-
+{/* Dépôts d'Eusko sur un compte numérique */}
 var RetourEusko = React.createClass({
     getInitialState() {
         return {
@@ -284,7 +284,7 @@ var RetourEusko = React.createClass({
         return (
             <div className="panel panel-info">
                 <div className="panel-heading">
-                    <h3 className="panel-title">{__("Retours d'eusko — Eusko retournés pour être reconvertis en €")}</h3>
+                    <h3 className="panel-title">{__("Retours d'eusko — Eusko retournés pour être reconvertis en € (euskos des crédits de compte numérique)")}</h3>
                 </div>
                 <div className="panel-body">
                     <div className="row">

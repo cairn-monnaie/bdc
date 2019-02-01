@@ -114,7 +114,7 @@ class MemberDepotEuskoNumeriquePage extends React.Component {
     buildForm = (data) => {
         this.disableButton()
 
-        data.member_login = this.state.member.login
+        data.member_login = this.state.member.username
         data.login_bdc = window.config.userName
 
         this.setState({formData: data}, this.getModalElements)
@@ -134,12 +134,14 @@ class MemberDepotEuskoNumeriquePage extends React.Component {
                 (item, key) => {
                     switch (key) {
                         case 'member_login':
-                            if (item.startsWith("Z")) {
+                            var name = item + ' - ' + this.state.member.name
+
+                            {/*f (item.startsWith("Z")) {
                                 var name = item + ' - ' + this.state.member.company
                             }
                             else {
                                 var name = item + ' - ' + this.state.member.firstname + ' ' + this.state.member.lastname
-                            }
+                            }*/}
                             return {'label': __('N° adhérent - Nom'), order: 1, 'value': name}
                             break;
                         case 'amount':
@@ -157,13 +159,14 @@ class MemberDepotEuskoNumeriquePage extends React.Component {
     }
 
     render = () => {
-        if (this.state.member) {
-            if (this.state.member.company)
-                var memberName = this.state.member.company
-            else
-                var memberName = this.state.member.firstname + " " + this.state.member.lastname
 
-            var memberLogin = this.state.member.login
+        if (this.state.member) {
+//            if (this.state.member.company)
+//                var memberName = this.state.member.company
+            var memberName = this.state.member.name
+//            else
+//                var memberName = this.state.member.firstname + " " + this.state.member.lastname
+            var memberLogin = this.state.member.username
         }
         else {
             var memberName = null

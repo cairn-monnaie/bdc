@@ -136,11 +136,11 @@ class MemberSearchPage extends React.Component {
                                         layout="elementOnly"
                                     />
                                 </div>
-                                /*<div className="col-md-2">
+                                {/* <div className="col-md-2">
                                   <a href="/members/add">
                                     <button type="button" className="btn btn-success">{__("Nouvel adhérent")}</button>
                                   </a>
-                                </div>*/
+                                </div> */}
                             </div>
                         </fieldset>
                     </MemberSearchForm>
