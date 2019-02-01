@@ -255,6 +255,7 @@ var NavbarRight = React.createClass({
             var computeData = (data) => {
                 this.setState({bdcName: data})
             }
+            //@WARNING : Redirects to dolibarr_data views but these views will use cyclos data
             fetchAuth(getAPIBaseURL + "bdc-name/", 'get', computeData)
         }
     },

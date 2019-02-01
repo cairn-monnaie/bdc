@@ -62,24 +62,25 @@ class MemberSearchPage extends React.Component {
         else if (search) {
             var searchUpperCase = search.toUpperCase()
 
-            if ((searchUpperCase.startsWith("E", 0) ||
+/*            if ((searchUpperCase.startsWith("E", 0) ||
                 searchUpperCase.startsWith("Z", 0)) &&
                 search.length === 6)
                 var searchString = '?login=' + searchUpperCase
             else
-                var searchString = '?name=' + search
+                var searchString = '?name=' + search */
+            var searchString = '?keyword=' + search
 
-            // We use fetch API to ... fetch members for this login / name
+            // We use fetch API to ... fetch members for this login / email
             var computeSearch = (search) => {
                 var searchResults = _.chain(search)
-                    .map(function(item){
+/*                    .map(function(item){
                         if (item.login.startsWith("E", 0))
                             return {name: item.firstname + " " + item.lastname,
                                     id: item.id, login: item.login}
 
                         else if (item.login.startsWith("Z", 0))
                             return {name: item.company, id: item.id, login: item.login}
-                    })
+                    })*/
                     .sortBy(function(item){ return item.name })
                     .value()
 
@@ -103,7 +104,7 @@ class MemberSearchPage extends React.Component {
 
             var searchResultsTable = (
                 <BootstrapTable data={this.state.searchResults} striped={true} hover={true} selectRow={selectRowProp}>
-                    <TableHeaderColumn dataField="login" isKey={true} width="100px">{__("N° adhérent")}</TableHeaderColumn>
+                    <TableHeaderColumn dataField="login" isKey={true} width="100px">{__("Login")}</TableHeaderColumn>
                     <TableHeaderColumn dataField="name">{__("Nom")}</TableHeaderColumn>
                 </BootstrapTable>
             )
@@ -130,16 +131,16 @@ class MemberSearchPage extends React.Component {
                                         value=""
                                         type="text"
                                         placeholder={__("Recherche d'un adhérent")}
-                                        help={__("Saisir Nom, Prénom ou N°adhérent (Format E12345)")}
+                                        help={__("Saisir Login ou email")}
                                         onChange={this.onSearchChange}
                                         layout="elementOnly"
                                     />
                                 </div>
-                                <div className="col-md-2">
+                                /*<div className="col-md-2">
                                   <a href="/members/add">
                                     <button type="button" className="btn btn-success">{__("Nouvel adhérent")}</button>
                                   </a>
-                                </div>
+                                </div>*/
                             </div>
                         </fieldset>
                     </MemberSearchForm>

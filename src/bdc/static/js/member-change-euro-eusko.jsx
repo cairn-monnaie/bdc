@@ -153,7 +153,7 @@ class MemberChangeEuroEuskoPage extends React.Component {
     buildForm = (data) => {
         this.disableButton()
 
-        data.member_login = this.state.member.login
+        data.member_login = this.state.member.username
         data.payment_mode = this.state.paymentMode.cyclos_id
         data.payment_mode_name = this.state.paymentMode.label
 
@@ -175,10 +175,10 @@ class MemberChangeEuroEuskoPage extends React.Component {
                     switch (key) {
                         case 'member_login':
                             if (item.startsWith("Z")) {
-                                var name = item + ' - ' + this.state.member.company
+                                var name = item + ' - ' + this.state.member.name
                             }
                             else {
-                                var name = item + ' - ' + this.state.member.firstname + ' ' + this.state.member.lastname
+                                var name = item + ' - ' + this.state.member.name
                             }
                             return {'label': __('N° adhérent - Nom'), order: 1, 'value': name}
                             break;
@@ -210,7 +210,7 @@ class MemberChangeEuroEuskoPage extends React.Component {
         })
 
         if (this.state.member) {
-            var memberName = this.state.member.firstname + " " + this.state.member.lastname
+            var memberName = this.state.member.name //this.state.member.firstname + " " + this.state.member.lastname
             var memberLogin = this.state.member.login
         }
         else {
