@@ -43,22 +43,22 @@ urlpatterns = [
 
     # basic operations
     url(r'^members/search$', members_views.search, name='member-search'),
-    url(r'^members/(?P<member_id>\d+)/?$', members_views.index, name='member-show'),
+    url(r'^members/(?P<member_id>[-]?\d+)/?$', members_views.index, name='member-show'),
 #    url(r'^members/add$', members_views.add, name='member-add'),
 
     # operations métiers for members
-#    url(r'^members/subscription/add/(?P<member_id>\d+)/?$',
+#    url(r'^members/subscription/add/(?P<member_id>[-]?\d+)/?$',
 #        members_views.add_subscription, name='member-subscription-add'),
-    url(r'^members/change/euro-eusko/(?P<member_id>\d+)/?$',
-        members_views.change_euro_eusko, name='member-change-euro-eusko'),
-    url(r'^members/change/euro-eusko-numeriques/(?P<member_id>\d+)/?$',
-        members_views.change_euro_eusko, name='member-change-euro-eusko-numeriques'),
-    url(r'^members/reconversion/(?P<member_id>\d+)/?$',
+    url(r'^members/change/euro-mlc/(?P<member_id>[-]?\d+)/?$',
+        members_views.change_euro_mlc, name='member-change-euro-mlc'),
+    url(r'^members/change/euro-mlc-numeriques/(?P<member_id>[-]?\d+)/?$',
+        members_views.change_euro_mlc, name='member-change-euro-mlc-numeriques'),
+    url(r'^members/reconversion/(?P<member_id>[-]?\d+)/?$',
         members_views.reconversion, name='member-reconversion'),
-    url(r'^members/depot-eusko-numerique/(?P<member_id>\d+)/?$',
-        members_views.depot_eusko_numerique, name='depot-eusko-numerique'),
-    url(r'^members/retrait-eusko-numerique/(?P<member_id>\d+)/?$',
-        members_views.retrait_eusko_numerique, name='retrait-eusko-numerique'),
+    url(r'^members/depot-mlc-numerique/(?P<member_id>[-]?\d+)/?$',
+        members_views.depot_mlc_numerique, name='depot-mlc-numerique'),
+    url(r'^members/retrait-mlc-numerique/(?P<member_id>[-]?\d+)/?$',
+        members_views.retrait_mlc_numerique, name='retrait-mlc-numerique'),
 
     url(r'^manager/?$', manager_views.index, name='manager'),
     url(r'^manager/history/(?P<account_name>[\w\-]+)/?$', manager_views.history, name='manager-history'),
@@ -68,6 +68,6 @@ urlpatterns = [
 
     url(r'^manager/bank-deposit/?$', manager_views.bank_deposit, name='bank-deposit'),
     url(r'^manager/cash-deposit/?$', manager_views.cash_deposit, name='cash-deposit'),
-#    url(r'^manager/sortie-caisse-eusko/?$', manager_views.cash_deposit, name='sortie-caisse-eusko'),
-    url(r'^manager/sortie-retour-eusko/?$', manager_views.cash_deposit, name='sortie-retour-eusko'),
+#    url(r'^manager/sortie-caisse-mlc/?$', manager_views.cash_deposit, name='sortie-caisse-mlc'),
+    url(r'^manager/sortie-retour-mlc/?$', manager_views.cash_deposit, name='sortie-retour-mlc'),
 ]
