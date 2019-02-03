@@ -12,12 +12,12 @@ Banque
 Banque de dépôt
 Bordereau
 Caisse € — Euros des changes et cotisations
-Caisse eusko — Eusko des cotisations
+Caisse mlc — Mlc des cotisations
 Ce champ ne peut pas faire plus de 45 caractères!
-Ceci n'est pas un N° adhérent Eusko valide.
+Ceci n'est pas un N° adhérent Mlc valide.
 Ceci n'est pas un N° téléphone valide. Evitez les points et les espaces.
 Change
-Change € - Eusko
+Change € - Mlc
 Chèques
 Choix Association 3% #1
 Choix Association 3% #2
@@ -46,8 +46,8 @@ Format: E12345
 Frais de commission (5%)
 Historique
 Historique caisse Euro
-Historique caisse Eusko
-Historique retour Eusko
+Historique caisse Mlc
+Historique retour Mlc
 Historique stock billets
 Identifiant Bureau de Change
 Identifiants incorrects !
@@ -67,7 +67,7 @@ Montant du dépot
 Montant du dépôt
 Montant du retrait
 Montant personnalisé
-Montant personnalisé incorrect, choisissez un montant dans la liste ou un montant supérieur à 20 (€ ou euskos)
+Montant personnalisé incorrect, choisissez un montant dans la liste ou un montant supérieur à 20 (€ ou mlcs)
 Montant total
 Mot de passe
 Mot de passe actuel
@@ -91,14 +91,14 @@ Pays
 Porteur
 Prénom
 Recherche d'un adhérent
-Retours d'eusko — Eusko retournés pour être reconvertis en €
+Retours d'mlc — Mlc retournés pour être reconvertis en €
 Saisir Nom, Prénom ou N°adhérent (Format E12345)
 Se connecter
-Sortie caisse eusko
-Sortie retours d'eusko
+Sortie caisse mlc
+Sortie retours d'mlc
 Sortie stock BDC
-Souhaite être informé des actualités liées à l'eusko
-Stock de billets — Eusko disponibles pour le change
+Souhaite être informé des actualités liées à l'mlc
+Stock de billets — Mlc disponibles pour le change
 Taper 4 chiffres minimum ...
 Une erreur s'est produite lors de la création de l'adhérent !
 Une erreur s'est produite lors de l'enregistrement de la cotisation !

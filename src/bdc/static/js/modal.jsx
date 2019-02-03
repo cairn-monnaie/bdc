@@ -7,7 +7,7 @@ import {
     ModalFooter
 } from 'react-modal-bootstrap'
 
-export default class ModalEusko extends React.Component {
+export default class ModalMlc extends React.Component {
     constructor(props) {
         super(props);
 
@@ -63,7 +63,7 @@ export default class ModalEusko extends React.Component {
                     <button className="btn btn-default" onClick={this.props.hideModal}>
                       {this.props.cancelLabel}
                     </button>
-                    <button className="btn btn-success" data-eusko="validate-modal" onClick={this.onValidate.bind(this)}>
+                    <button className="btn btn-success" data-mlc="validate-modal" onClick={this.onValidate.bind(this)}>
                       {this.props.validateLabel}
                     </button>
                 </ModalFooter>
@@ -73,13 +73,13 @@ export default class ModalEusko extends React.Component {
 }
 
 // Specifies the default values and type checking for props
-ModalEusko.defaultProps = {
+ModalMlc.defaultProps = {
     cancelLabel: __("Annuler"),
     validateLabel: __("Valider"),
     modalTitle: __("Confirmation")
 }
 
-ModalEusko.propTypes = {
+ModalMlc.propTypes = {
     onValidate: React.PropTypes.func.isRequired,
     isModalOpen: React.PropTypes.bool.isRequired,
     modalBody: React.PropTypes.array

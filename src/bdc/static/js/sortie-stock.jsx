@@ -65,7 +65,7 @@ class SortieStockPage extends React.Component {
         var computePorteurListData = (porteurList) => {
             this.setState({porteurList: _.sortBy(porteurList, function(item){ return item.label })})
         }
-        fetchAuth(getAPIBaseURL + "porteurs-eusko/", 'get', computePorteurListData)
+        fetchAuth(getAPIBaseURL + "porteurs-mlc/", 'get', computePorteurListData)
 
         // Get bdc name
         var computeData = (data) => {
@@ -164,7 +164,7 @@ class SortieStockPage extends React.Component {
                     <fieldset>
                         <Input
                             name="amount"
-                            data-eusko="sortiestock-amount"
+                            data-mlc="sortiestock-amount"
                             value=""
                             label={__("Montant")}
                             type="number"
@@ -184,7 +184,7 @@ class SortieStockPage extends React.Component {
                                 {__("Porteur")}
                                 <span className="required-symbol">&nbsp;*</span>
                             </label>
-                            <div className="col-sm-6 sortiestock" data-eusko="sortiestock-porteur">
+                            <div className="col-sm-6 sortiestock" data-mlc="sortiestock-porteur">
                                 <SimpleSelect
                                     className={reactSelectizeErrorClass}
                                     ref="select"
@@ -205,7 +205,7 @@ class SortieStockPage extends React.Component {
                         <Textarea
                             name="description"
                             value={this.state.textareaDescription}
-                            data-eusko="sortiestock-description"
+                            data-mlc="sortiestock-description"
                             rows={3}
                             elementWrapperClassName={[{'col-sm-9': false}, 'col-sm-6']}
                             label={__("Description")}
@@ -217,7 +217,7 @@ class SortieStockPage extends React.Component {
                         <Row layout="horizontal">
                             <input
                                 name="submit"
-                                data-eusko="sortiestock-submit"
+                                data-mlc="sortiestock-submit"
                                 type="submit"
                                 defaultValue={propTranslateButton}
                                 className="btn btn-success"

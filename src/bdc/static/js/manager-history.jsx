@@ -111,11 +111,11 @@ var ManagerHistoryPage = React.createClass({
                 </div>
             )
         }
-        else if (this.props.mode == 'caisse_eusko_bdc') {
+        else if (this.props.mode == 'caisse_mlc_bdc') {
             var actionButtons = (
                 <div className="row margin-bottom">
                     <div className="col-md-offset-2 col-md-2 col-sm-4">
-                        <a href="/manager/sortie-caisse-eusko" className="btn btn-info">{__("Sortie")}</a>
+                        <a href="/manager/sortie-caisse-mlc" className="btn btn-info">{__("Sortie")}</a>
                     </div>
                     <div className="col-md-offset-1 col-md-2 col-sm-4">
                         <label className="control-label col-md-12 solde-history-label">
@@ -126,11 +126,11 @@ var ManagerHistoryPage = React.createClass({
                 </div>
             )
         }
-        else if (this.props.mode == 'retours_d_eusko_bdc') {
+        else if (this.props.mode == 'retours_d_mlc_bdc') {
             var actionButtons = (
                 <div className="row margin-bottom">
                     <div className="col-md-offset-2 col-md-2 col-sm-4">
-                        <a href="/manager/sortie-retour-eusko" className="btn btn-info">{__("Sortie")}</a>
+                        <a href="/manager/sortie-retour-mlc" className="btn btn-info">{__("Sortie")}</a>
                     </div>
                     <div className="col-md-offset-1 col-md-2 col-sm-4">
                         <label className="control-label col-md-12 solde-history-label">
@@ -191,25 +191,25 @@ if (window.location.pathname.toLowerCase().indexOf("stock-billets") != -1)
 {
     var pageTitle = __("Historique stock billets")
     var mode = 'stock_de_billets_bdc'
-    var url = getAPIBaseURL + "change-euro-eusko/"
+    var url = getAPIBaseURL + "change-euro-mlc/"
 }
 else if (window.location.pathname.toLowerCase().indexOf("caisse-euro") != -1)
 {
     var pageTitle = __("Historique caisse Euro")
     var mode = 'caisse_euro_bdc'
-    var url = getAPIBaseURL + "change-euro-eusko/"
+    var url = getAPIBaseURL + "change-euro-mlc/"
 }
-else if (window.location.pathname.toLowerCase().indexOf("caisse-eusko") != -1)
+else if (window.location.pathname.toLowerCase().indexOf("caisse-mlc") != -1)
 {
-    var pageTitle = __("Historique caisse Eusko")
-    var mode = 'caisse_eusko_bdc'
-    var url = getAPIBaseURL + "change-euro-eusko/"
+    var pageTitle = __("Historique caisse Mlc")
+    var mode = 'caisse_mlc_bdc'
+    var url = getAPIBaseURL + "change-euro-mlc/"
 }
-else if (window.location.pathname.toLowerCase().indexOf("retour-eusko") != -1)
+else if (window.location.pathname.toLowerCase().indexOf("retour-mlc") != -1)
 {
-    var pageTitle = __("Historique retour Eusko")
-    var mode = 'retours_d_eusko_bdc'
-    var url = getAPIBaseURL + "change-euro-eusko/"
+    var pageTitle = __("Historique retour Mlc")
+    var mode = 'retours_d_mlc_bdc'
+    var url = getAPIBaseURL + "change-euro-mlc/"
 }
 else
     window.location.assign("/manager");

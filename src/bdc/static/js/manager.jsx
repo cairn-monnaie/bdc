@@ -13,21 +13,21 @@ class Manager extends React.Component {
         this.state = {
             stockBilletsData: undefined,
             caisseEuroData: undefined,
-            caisseEuskoData: undefined,
-            retourEuskoData: undefined,
+            caisseMlcData: undefined,
+            retourMlcData: undefined,
         }
 
         // Get Accounts Summaries:
         // Stock de billets: stock_de_billets_bdc
         // Caisse euros: caisse_euro_bdc
-        // Caisse eusko: caisse_eusko_bdc
-        // Retour eusko: retours_d_eusko_bdc
+        // Caisse mlc: caisse_mlc_bdc
+        // Retour mlc: retours_d_mlc_bdc
         var computeManagerData = (data) => {
             this.setState({
                 stockBilletsData: _.filter(data, (item) => { return item.type.id == "stock_de_billets_bdc" })[0],
                 caisseEuroData: _.filter(data, (item) => { return item.type.id == "caisse_euro_bdc" })[0],
-                caisseEuskoData: _.filter(data, (item) => { return item.type.id == "caisse_eusko_bdc" })[0],
-                retourEuskoData: _.filter(data, (item) => { return item.type.id == "retours_d_eusko_bdc" })[0]
+                caisseMlcData: _.filter(data, (item) => { return item.type.id == "caisse_mlc_bdc" })[0],
+                retourMlcData: _.filter(data, (item) => { return item.type.id == "retours_d_mlc_bdc" })[0]
             })
         }
         fetchAuth(getAPIBaseURL + "accounts-summaries/", 'get', computeManagerData)
@@ -38,8 +38,8 @@ class Manager extends React.Component {
             <div className="col-md-10">
                 <StockBillets data={this.state.stockBilletsData} />
                 <CaisseEuro data={this.state.caisseEuroData} />
-                {/*<CaisseEusko data={this.state.caisseEuskoData} />*/}
-                <RetourEusko data={this.state.retourEuskoData} />
+                {/*<CaisseMlc data={this.state.caisseMlcData} />*/}
+                <RetourMlc data={this.state.retourMlcData} />
             </div>
         )
     }
@@ -64,7 +64,7 @@ var StockBillets = React.createClass({
         return (
             <div className="panel panel-info">
                 <div className="panel-heading">
-                    <h3 className="panel-title">{__("Stock de billets — Eusko disponibles pour le change (conversions + retraits de compte numérique)")}</h3>
+                    <h3 className="panel-title">{__("Stock de billets — Mlc disponibles pour le change (conversions + retraits de compte numérique)")}</h3>
                 </div>
                 <div className="panel-body">
                     <div className="row">
@@ -73,15 +73,15 @@ var StockBillets = React.createClass({
                             <span className="col-md-5">{this.state.balance + " " + this.state.currency}</span>
                         </div>
                         <div className="col-md-4">
-                            <a href="/manager/history/stock-billets" data-eusko="history-stock-billets" className="btn btn-default">{__("Historique")}</a>
+                            <a href="/manager/history/stock-billets" data-mlc="history-stock-billets" className="btn btn-default">{__("Historique")}</a>
                         </div>
                     </div>
                     <div className="row margin-top">
                         <div className="col-md-offset-2 col-md-2 col-sm-4">
-                            <a href="/manager/entree-stock" data-eusko="entree-stock" className="btn btn-info">{__("Entrée")}</a>
+                            <a href="/manager/entree-stock" data-mlc="entree-stock" className="btn btn-info">{__("Entrée")}</a>
                         </div>
                         <div className="col-md-offset-2 col-md-2 col-sm-4">
-                            <a href="/manager/sortie-stock" data-eusko="sortie-stock" className="btn btn-default">{__("Sortie")}</a>
+                            <a href="/manager/sortie-stock" data-mlc="sortie-stock" className="btn btn-default">{__("Sortie")}</a>
                         </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@ var CaisseEuro = React.createClass({
         }
         fetchAuth(getAPIBaseURL +
                   "accounts-history/?account_type=caisse_euro_bdc&" +
-                  "filter=a_remettre_a_euskal_moneta&" +
+                  "filter=a_remettre_a_l_assocation&" +
                   "direction=CREDIT",
                   'get', computeData)
     },
@@ -195,7 +195,7 @@ var CaisseEuro = React.createClass({
                             <span className="col-md-5">{this.state.balance + " " + this.state.currency}</span>
                         </div>
                         <div className="col-md-4">
-                            <a href="/manager/history/caisse-euro" data-eusko="history-caisse-euro" className="btn btn-default">{__("Historique")}</a>
+                            <a href="/manager/history/caisse-euro" data-mlc="history-caisse-euro" className="btn btn-default">{__("Historique")}</a>
                         </div>
                     </div>
                      <div className="row">
@@ -212,10 +212,10 @@ var CaisseEuro = React.createClass({
                     </div>
                     <div className="row margin-top">
                         <div className="col-md-offset-2 col-md-2 col-sm-4">
-                            <a href="/manager/bank-deposit" data-eusko="bank-deposit" className="btn btn-info">{__("Dépôt en banque")}</a>
+                            <a href="/manager/bank-deposit" data-mlc="bank-deposit" className="btn btn-info">{__("Dépôt en banque")}</a>
                         </div>
                         <div className="col-md-offset-2 col-md-2 col-sm-4">
-                            <a href="/manager/cash-deposit" data-eusko="cash-deposit" className="btn btn-default">{__("Remise de monnaie à Euskal Moneta")}</a>
+                            <a href="/manager/cash-deposit" data-mlc="cash-deposit" className="btn btn-default">{__("Remise de monnaie à Euskal Moneta")}</a>
                         </div>
                     </div>
                 </div>
@@ -224,7 +224,7 @@ var CaisseEuro = React.createClass({
     }
 })
 
-{/* var CaisseEusko = React.createClass({
+{/* var CaisseMlc = React.createClass({
     getInitialState() {
         return {
             balance: '',
@@ -243,7 +243,7 @@ var CaisseEuro = React.createClass({
         return (
             <div className="panel panel-info">
                 <div className="panel-heading">
-                    <h3 className="panel-title">{__("Caisse eusko — Eusko des cotisations")}</h3>
+                    <h3 className="panel-title">{__("Caisse mlc — Mlc des cotisations")}</h3>
                 </div>
                 <div className="panel-body">
                     <div className="row">
@@ -252,12 +252,12 @@ var CaisseEuro = React.createClass({
                             <span className="col-md-5">{this.state.balance + " " + this.state.currency}</span>
                         </div>
                         <div className="col-md-4">
-                            <a href="/manager/history/caisse-eusko" data-eusko="history-caisse-eusko" className="btn btn-default">{__("Historique")}</a>
+                            <a href="/manager/history/caisse-mlc" data-mlc="history-caisse-mlc" className="btn btn-default">{__("Historique")}</a>
                         </div>
                     </div>
                     <div className="row margin-top">
                         <div className="col-md-offset-2 col-md-2 col-sm-4">
-                            <a href="/manager/sortie-caisse-eusko" data-eusko="sortie-caisse-eusko" className="btn btn-info">{__("Sortie")}</a>
+                            <a href="/manager/sortie-caisse-mlc" data-mlc="sortie-caisse-mlc" className="btn btn-info">{__("Sortie")}</a>
                         </div>
                     </div>
                 </div>
@@ -265,8 +265,8 @@ var CaisseEuro = React.createClass({
         )
     }
 }) */}
-{/* Dépôts d'Eusko sur un compte numérique */}
-var RetourEusko = React.createClass({
+{/* Dépôts d'Mlc sur un compte numérique */}
+var RetourMlc = React.createClass({
     getInitialState() {
         return {
             balance: '',
@@ -285,7 +285,7 @@ var RetourEusko = React.createClass({
         return (
             <div className="panel panel-info">
                 <div className="panel-heading">
-                    <h3 className="panel-title">{__("Retours d'eusko — Eusko retournés pour être reconvertis en € (euskos des crédits de compte numérique)")}</h3>
+                    <h3 className="panel-title">{__("Retours d'mlc — Mlc retournés pour être reconvertis en € (mlcs des crédits de compte numérique)")}</h3>
                 </div>
                 <div className="panel-body">
                     <div className="row">
@@ -294,12 +294,12 @@ var RetourEusko = React.createClass({
                             <span className="col-md-5">{this.state.balance + " " + this.state.currency}</span>
                         </div>
                         <div className="col-md-4">
-                            <a href="/manager/history/retour-eusko" data-eusko="history-retour-eusko" className="btn btn-default">{__("Historique")}</a>
+                            <a href="/manager/history/retour-mlc" data-mlc="history-retour-mlc" className="btn btn-default">{__("Historique")}</a>
                         </div>
                     </div>
                     <div className="row margin-top">
                         <div className="col-md-offset-2 col-md-2 col-sm-4">
-                            <a href="/manager/sortie-retour-eusko" data-eusko="sortie-retour-eusko" className="btn btn-info">{__("Sortie")}</a>
+                            <a href="/manager/sortie-retour-mlc" data-mlc="sortie-retour-mlc" className="btn btn-info">{__("Sortie")}</a>
                         </div>
                     </div>
                 </div>

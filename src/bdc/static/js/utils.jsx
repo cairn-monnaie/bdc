@@ -145,7 +145,7 @@ var getUrlParameter = (name) => {
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 }
 
-var isMemberIdEusko = (values, value) => {
+var isMemberIdMlc = (values, value) => {
     return value && value.match(/^[EZ]\d\d\d\d\d$/)
 }
 
@@ -359,7 +359,7 @@ module.exports = {
     fetchCustom: fetchCustom,
     fetchGetToken: fetchGetToken,
     getUrlParameter: getUrlParameter,
-    isMemberIdEusko: isMemberIdEusko,
+    isMemberIdMlc: isMemberIdMlc,
     isPositiveNumeric: isPositiveNumeric,
     titleCase: titleCase,
     getCurrentLang: getCurrentLang,

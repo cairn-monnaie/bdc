@@ -18,7 +18,7 @@ const MemberShow = React.createClass({
 
         // Get member data
         var computeMemberData = (member) => {
-//            var hasAcceptedCGU = member.array_options.options_accepte_cgu_eusko_numerique ? true : false
+//            var hasAcceptedCGU = member.array_options.options_accepte_cgu_mlc_numerique ? true : false
             this.setState({member: member}) //, hasAcceptedCGU: hasAcceptedCGU})
         }
         fetchAuth(this.props.url + this.state.memberID + '/', 'get', computeMemberData)
@@ -37,7 +37,7 @@ const MemberShow = React.createClass({
 //            var memberStatus = (
 //                <div className="font-member-status">
 //                    <span className="glyphicon glyphicon-ok member-status-ok"></span>
-//                    <span className="member-status-text" data-eusko="member-show-status">
+//                    <span className="member-status-text" data-mlc="member-show-status">
 //                        {__("À jour")}
 //                    </span>
 //                    <span className="member-status-date">({dateEndSub})</span>
@@ -50,7 +50,7 @@ const MemberShow = React.createClass({
 //            var memberStatus = (
 //                <div className="font-member-status">
 //                    <span className="glyphicon glyphicon-remove member-status-nok"></span>
-//                    <span className="member-status-text" data-eusko="member-show-status">
+//                    <span className="member-status-text" data-mlc="member-show-status">
 //                        {__("Pas à jour")}
 //                    </span>
 //                    <span className="member-status-date">({dateEndSub})</span>
@@ -81,23 +81,23 @@ const MemberShow = React.createClass({
             
 //                if (this.state.hasAcceptedCGU) {
                     var changeNumerique = (
-                        <a href={"/members/change/euro-eusko-numeriques/" + this.state.member.id}
+                        <a href={"/members/change/euro-mlc-numeriques/" + this.state.member.id}
                            className="btn btn-default col-sm-offset-1">
-                           {__("Chargement du compte")}
+                           {__("Change numérique")}
                         </a>
                     )
 
                     var memberActionDepotCompte = (
-                        <a href={"/members/depot-eusko-numerique/" + this.state.member.id}
+                        <a href={"/members/depot-mlc-numerique/" + this.state.member.id}
                            className="btn btn-default">
-                            {__("Dépôt d'eusko sur le compte")}
+                            {__("Dépôt de mlc billets sur le compte")}
                         </a>
                     )
 
                     var memberActionRetraitCompte = (
-                        <a href={"/members/retrait-eusko-numerique/" + this.state.member.id}
+                        <a href={"/members/retrait-mlc-numerique/" + this.state.member.id}
                            className="btn btn-default col-sm-offset-1">
-                            {__("Retrait d'eusko du compte")}
+                            {__("Retrait de mlc du compte")}
                         </a>
                     )
 //                }
@@ -105,7 +105,7 @@ const MemberShow = React.createClass({
                 var memberActions = (
                     <div>
                         <div className="row member-show-div-margin-left">
-                            <a href={"/members/change/euro-eusko/" + this.state.member.id}
+                            <a href={"/members/change/euro-mlc/" + this.state.member.id}
                                className="btn btn-default">
                                {__("Change billets")}
                             </a>
@@ -139,7 +139,7 @@ const MemberShow = React.createClass({
 //            var memberName = (
 //                <div className="col-sm-4" >
 //                    <span className="member-show-civility">{titleCase(this.state.member.civility_id) + " "}</span>
-//                    <span data-eusko="member-show-fullname">
+//                    <span data-mlc="member-show-fullname">
 //                        {this.state.member.firstname + " " + this.state.member.lastname}
 //                    </span>
 //                </div>
@@ -152,16 +152,16 @@ const MemberShow = React.createClass({
 //                var memberActionRetraitCompte = null
 //                if (this.state.hasAcceptedCGU) {
 //                    var changeNumerique = (
-//                        <a href={"/members/change/euro-eusko-numeriques/" + this.state.member.id}
+//                        <a href={"/members/change/euro-mlc-numeriques/" + this.state.member.id}
 //                           className="btn btn-default col-sm-offset-1">
 //                           {__("Chargement du compte")}
 //                        </a>
 //                    )
 //
 //                    var memberActionRetraitCompte = (
-//                        <a href={"/members/retrait-eusko-numerique/" + this.state.member.id}
+//                        <a href={"/members/retrait-mlc-numerique/" + this.state.member.id}
 //                           className="btn btn-default">
-//                            {__("Retrait d'eusko du compte")}
+//                            {__("Retrait d'mlc du compte")}
 //                        </a>
 //                    )
 //                }
@@ -169,7 +169,7 @@ const MemberShow = React.createClass({
 //                var memberActions = (
 //                    <div>
 //                        <div className="row member-show-div-margin-left">
-//                            <a href={"/members/change/euro-eusko/" + this.state.member.id}
+//                            <a href={"/members/change/euro-mlc/" + this.state.member.id}
 //                               className="btn btn-info">
 //                               {__("Change billets")}
 //                            </a>
@@ -201,14 +201,14 @@ const MemberShow = React.createClass({
 //
 //        if (this.state.member.address) {
 //            var memberAddress = (
-//                <span data-eusko="member-show-address">
+//                <span data-mlc="member-show-address">
 //                    {this.state.member.address + "  ―  " + this.state.member.zip + " " + this.state.member.town}
 //                </span>
 //            )
 //        }
 //        else {
 //            var memberAddress = (
-//                <span data-eusko="member-show-address">
+//                <span data-mlc="member-show-address">
 //                    {this.state.member.zip + " " + this.state.member.town}
 //                </span>
 //            )
@@ -221,7 +221,7 @@ const MemberShow = React.createClass({
                         <div className="form-group row">
                             <label className="control-label col-sm-2">{__("Login")}</label>
                             <div className="col-sm-4">
-                                <span data-eusko="member-show-login">{this.state.member.username}</span>
+                                <span data-mlc="member-show-login">{this.state.member.username}</span>
                             </div>
                             {/*                            <div className="col-sm-6">
                                 {memberStatus}

@@ -1,12 +1,12 @@
 import {
     fetchAuth,
-    isMemberIdEusko,
+    isMemberIdMlc,
     getAPIBaseURL,
     NavbarTitle,
     SelectizeUtils,
 } from 'Utils'
 
-import ModalEusko from 'Modal'
+import ModalMlc from 'Modal'
 
 const {
     Input,
@@ -27,7 +27,7 @@ const {
 const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation)
 
 
-Formsy.addValidationRule('isMemberIdEusko', isMemberIdEusko)
+Formsy.addValidationRule('isMemberIdMlc', isMemberIdMlc)
 
 Formsy.addValidationRule('isValidPhoneNumber', (values, value) =>
 {
@@ -352,7 +352,7 @@ class MemberAddPage extends React.Component {
                             return {'label': __('Email'), 'value': item, order: 11}
                             break;
                         case 'options_recevoir_actus':
-                            return {'label': __("Souhaite être informé des actualités liées à l'eusko"),
+                            return {'label': __("Souhaite être informé des actualités liées à l'mlc"),
                                     'value': item == '1' ? __('Oui') : __('Non'), order: 12}
                             break
                         case 'options_asso_saisie_libre':
@@ -449,16 +449,16 @@ class MemberAddPage extends React.Component {
                     <fieldset>
                         <Input
                             name="login"
-                            data-eusko="memberaddform-login"
+                            data-mlc="memberaddform-login"
                             value={this.state.login}
                             label={__("N° adhérent")}
                             type="text"
                             placeholder={__("N° adhérent")}
                             help={__("Format: E12345")}
                             onChange={this.onLoginChange}
-                            validations="isMemberIdEusko"
+                            validations="isMemberIdMlc"
                             validationErrors={{
-                                isMemberIdEusko: __("Ceci n'est pas un N° adhérent Eusko valide.")
+                                isMemberIdMlc: __("Ceci n'est pas un N° adhérent Mlc valide.")
                             }}
                             elementWrapperClassName={[{'col-sm-9': false}, 'col-sm-6']}
                             required
@@ -466,7 +466,7 @@ class MemberAddPage extends React.Component {
                         <RadioGroup
                             name="civility_id"
                             value={this.state.civility_id}
-                            data-eusko="memberaddform-civility_id"
+                            data-mlc="memberaddform-civility_id"
                             type="inline"
                             label={__("Civilité")}
                             options={[{value: 'MME', label: __('Madame')},
@@ -478,7 +478,7 @@ class MemberAddPage extends React.Component {
                         />
                         <Input
                             name="lastname"
-                            data-eusko="memberaddform-lastname"
+                            data-mlc="memberaddform-lastname"
                             value={this.state.lastname}
                             onChange={this.onFormChange}
                             label={__("Nom")}
@@ -493,7 +493,7 @@ class MemberAddPage extends React.Component {
                         />
                         <Input
                             name="firstname"
-                            data-eusko="memberaddform-firstname"
+                            data-mlc="memberaddform-firstname"
                             value={this.state.firstname}
                             onChange={this.onFormChange}
                             label={__("Prénom")}
@@ -514,7 +514,7 @@ class MemberAddPage extends React.Component {
                                 {__("Date de naissance")}
                                 <span className="required-symbol">&nbsp;*</span>
                             </label>
-                            <div className="col-sm-6 memberaddform-birth" data-eusko="memberaddform-birth">
+                            <div className="col-sm-6 memberaddform-birth" data-mlc="memberaddform-birth">
                                 <DatePicker
                                     name="birth"
                                     className="form-control"
@@ -529,7 +529,7 @@ class MemberAddPage extends React.Component {
                         </div>
                         <Textarea
                             name="address"
-                            data-eusko="memberaddform-address"
+                            data-mlc="memberaddform-address"
                             value={this.state.address}
                             onChange={this.onFormChange}
                             label={__("Adresse postale")}
@@ -547,7 +547,7 @@ class MemberAddPage extends React.Component {
                                 {__("Code Postal")}
                                 <span className="required-symbol">&nbsp;*</span>
                             </label>
-                            <div className="col-sm-6 memberaddform" data-eusko="memberaddform-zip">
+                            <div className="col-sm-6 memberaddform" data-mlc="memberaddform-zip">
                                 <SimpleSelect
                                     ref="select"
                                     value={this.state.zip}
@@ -575,7 +575,7 @@ class MemberAddPage extends React.Component {
                                 {__("Ville")}
                                 <span className="required-symbol">&nbsp;*</span>
                             </label>
-                            <div className="col-sm-6 memberaddform" data-eusko="memberaddform-town">
+                            <div className="col-sm-6 memberaddform" data-mlc="memberaddform-town">
                                 <SimpleSelect
                                     ref="select"
                                     value={this.state.town}
@@ -600,7 +600,7 @@ class MemberAddPage extends React.Component {
                                 {__("Pays")}
                                 <span className="required-symbol">&nbsp;*</span>
                             </label>
-                            <div className="col-sm-6 memberaddform" data-eusko="memberaddform-country">
+                            <div className="col-sm-6 memberaddform" data-mlc="memberaddform-country">
                                 <SimpleSelect
                                     ref="select"
                                     value={this.state.country}
@@ -619,7 +619,7 @@ class MemberAddPage extends React.Component {
                         </div>
                         <Input
                             name="phone"
-                            data-eusko="memberaddform-phone"
+                            data-mlc="memberaddform-phone"
                             value={this.state.phone}
                             label={__("N° téléphone")}
                             type="tel"
@@ -634,7 +634,7 @@ class MemberAddPage extends React.Component {
                         />
                         <Input
                             name="email"
-                            data-eusko="memberaddform-email"
+                            data-mlc="memberaddform-email"
                             value={this.state.email}
                             label={__("Email")}
                             type="email"
@@ -649,11 +649,11 @@ class MemberAddPage extends React.Component {
                         />
                         <RadioGroup
                             name="options_recevoir_actus"
-                            data-eusko="memberaddform-options-recevoir-actus"
+                            data-mlc="memberaddform-options-recevoir-actus"
                             value={this.state.options_recevoir_actus}
                             onChange={this.onFormChange}
                             type="inline"
-                            label={__("Souhaite être informé des actualités liées à l'eusko")}
+                            label={__("Souhaite être informé des actualités liées à l'mlc")}
                             help={__("L'adhérent recevra un à deux mails par semaine.")}
                             options={[{value: '1', label: __('Oui')},
                                       {value: '0', label: __('Non')}
@@ -668,7 +668,7 @@ class MemberAddPage extends React.Component {
                                 htmlFor="memberaddform-asso">
                                 {__("Choix Association 3% #1")}
                             </label>
-                            <div className="col-sm-6 memberaddform" data-eusko="memberaddform-asso">
+                            <div className="col-sm-6 memberaddform" data-mlc="memberaddform-asso">
                                 <SimpleSelect
                                     ref="select"
                                     value={this.state.fkAsso}
@@ -691,7 +691,7 @@ class MemberAddPage extends React.Component {
                                 htmlFor="memberaddform-asso2">
                                 {__("Choix Association 3% #2")}
                             </label>
-                            <div className="col-sm-6 memberaddform" data-eusko="memberaddform-asso2">
+                            <div className="col-sm-6 memberaddform" data-mlc="memberaddform-asso2">
                                 <SimpleSelect
                                     ref="select"
                                     value={this.state.fkAsso2}
@@ -711,7 +711,7 @@ class MemberAddPage extends React.Component {
                         <Row layout="horizontal">
                             <input
                                 name="submit"
-                                data-eusko="memberaddform-submit"
+                                data-mlc="memberaddform-submit"
                                 type="submit"
                                 defaultValue={__("Création d'un adhérent")}
                                 className="btn btn-success"
@@ -724,7 +724,7 @@ class MemberAddPage extends React.Component {
                 <ToastContainer ref="container"
                                 toastMessageFactory={ToastMessageFactory}
                                 className="toast-top-right toast-top-right-navbar" />
-                <ModalEusko hideModal={this.hideModal} isModalOpen={this.state.isModalOpen} modalBody={this.state.modalBody} onValidate={this.submitForm} />
+                <ModalMlc hideModal={this.hideModal} isModalOpen={this.state.isModalOpen} modalBody={this.state.modalBody} onValidate={this.submitForm} />
             </div>
         );
     }

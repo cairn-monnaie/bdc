@@ -6,7 +6,7 @@ import {
     SelectizeUtils
 } from 'Utils'
 
-import ModalEusko from 'Modal'
+import ModalMlc from 'Modal'
 
 const {
     Input,
@@ -23,7 +23,7 @@ const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animati
 
 Formsy.addValidationRule('isPositiveNumeric', isPositiveNumeric)
 
-const MemberRetraitEuskoNumeriqueForm = React.createClass({
+const MemberRetraitMlcNumeriqueForm = React.createClass({
 
     mixins: [FRC.ParentContextMixin],
 
@@ -36,7 +36,7 @@ const MemberRetraitEuskoNumeriqueForm = React.createClass({
             <Formsy.Form
                 className={this.getLayoutClassName()}
                 {...this.props}
-                ref="memberretrait-eusko-numerique"
+                ref="memberretrait-mlc-numerique"
             >
                 {this.props.children}
             </Formsy.Form>
@@ -44,7 +44,7 @@ const MemberRetraitEuskoNumeriqueForm = React.createClass({
     }
 });
 
-class MemberRetraitEuskoNumeriquePage extends React.Component {
+class MemberRetraitMlcNumeriquePage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -104,7 +104,7 @@ class MemberRetraitEuskoNumeriquePage extends React.Component {
                 }
                 else if (data.error == 'error-bureau-not-enough-money') {
                     this.refs.container.error(
-                        __("Vous n'avez pas assez d'eusko en stock pour réaliser cette opération."),
+                        __("Vous n'avez pas assez d'mlc en stock pour réaliser cette opération."),
                         "",
                         {
                             timeOut: 5000,
@@ -201,20 +201,20 @@ class MemberRetraitEuskoNumeriquePage extends React.Component {
 
         return (
             <div className="row">
-                <MemberRetraitEuskoNumeriqueForm
+                <MemberRetraitMlcNumeriqueForm
                     onValidSubmit={this.buildForm}
                     onInvalid={this.disableButton}
                     onValid={this.enableButton}
-                    ref="memberretrait-eusko-numerique">
+                    ref="memberretrait-mlc-numerique">
                     <fieldset>
                         <div className="form-group row member-login-row">
                             <label
                                 className="control-label col-sm-3"
-                                htmlFor="memberretrait-eusko-numerique-fullname">
+                                htmlFor="memberretrait-mlc-numerique-fullname">
                                 {__("N° Adhérent")}
                             </label>
-                            <div className="col-sm-6 memberretrait-eusko-numerique control-label text-align-left"
-                                 data-eusko="memberretrait-eusko-numerique-fullname">
+                            <div className="col-sm-6 memberretrait-mlc-numerique control-label text-align-left"
+                                 data-mlc="memberretrait-mlc-numerique-fullname">
                                 {memberLogin}
                             </div>
                             <div className="col-sm-3"></div>
@@ -222,18 +222,18 @@ class MemberRetraitEuskoNumeriquePage extends React.Component {
                         <div className="form-group row">
                             <label
                                 className="control-label col-sm-3"
-                                htmlFor="memberretrait-eusko-numerique-fullname">
+                                htmlFor="memberretrait-mlc-numerique-fullname">
                                 {__("Nom")}
                             </label>
-                            <div className="col-sm-6 memberretrait-eusko-numerique control-label text-align-left"
-                                 data-eusko="memberretrait-eusko-numerique-fullname">
+                            <div className="col-sm-6 memberretrait-mlc-numerique control-label text-align-left"
+                                 data-mlc="memberretrait-mlc-numerique-fullname">
                                 {memberName}
                             </div>
                             <div className="col-sm-3"></div>
                         </div>
                         <Input
                             name="amount"
-                            data-eusko="retrait-eusko-numerique-amount"
+                            data-mlc="retrait-mlc-numerique-amount"
                             value=""
                             label={__("Montant")}
                             type="number"
@@ -251,7 +251,7 @@ class MemberRetraitEuskoNumeriquePage extends React.Component {
                         <Row layout="horizontal">
                             <input
                                 name="submit"
-                                data-eusko="memberretrait-eusko-numerique-submit"
+                                data-mlc="memberretrait-mlc-numerique-submit"
                                 type="submit"
                                 defaultValue={__("Enregistrer")}
                                 className="btn btn-success"
@@ -260,11 +260,11 @@ class MemberRetraitEuskoNumeriquePage extends React.Component {
                             />
                         </Row>
                     </fieldset>
-                </MemberRetraitEuskoNumeriqueForm>
+                </MemberRetraitMlcNumeriqueForm>
                 <ToastContainer ref="container"
                                 toastMessageFactory={ToastMessageFactory}
                                 className="toast-top-right toast-top-right-navbar" />
-                <ModalEusko hideModal={this.hideModal} isModalOpen={this.state.isModalOpen}
+                <ModalMlc hideModal={this.hideModal} isModalOpen={this.state.isModalOpen}
                             modalBody={this.state.modalBody}
                             modalTitle={__("Retrait du compte") + " - " + __("Confirmation")}
                             onValidate={this.submitForm}
@@ -276,8 +276,8 @@ class MemberRetraitEuskoNumeriquePage extends React.Component {
 
 
 ReactDOM.render(
-    <MemberRetraitEuskoNumeriquePage url={getAPIBaseURL + "retrait-eusko-numerique/"} method="POST" />,
-    document.getElementById('retrait-eusko-numerique')
+    <MemberRetraitMlcNumeriquePage url={getAPIBaseURL + "retrait-mlc-numerique/"} method="POST" />,
+    document.getElementById('retrait-mlc-numerique')
 )
 
 ReactDOM.render(

@@ -6,7 +6,7 @@ import {
     SelectizeUtils
 } from 'Utils'
 
-import ModalEusko from 'Modal'
+import ModalMlc from 'Modal'
 
 const {
     Input,
@@ -26,7 +26,7 @@ const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animati
 
 Formsy.addValidationRule('isPositiveNumeric', isPositiveNumeric)
 
-const MemberChangeEuroEuskoForm = React.createClass({
+const MemberChangeEuroMlcForm = React.createClass({
 
     mixins: [FRC.ParentContextMixin],
 
@@ -39,7 +39,7 @@ const MemberChangeEuroEuskoForm = React.createClass({
             <Formsy.Form
                 className={this.getLayoutClassName()}
                 {...this.props}
-                ref="memberchangeeuroeusko"
+                ref="memberchangeeuromlc"
             >
                 {this.props.children}
             </Formsy.Form>
@@ -47,7 +47,7 @@ const MemberChangeEuroEuskoForm = React.createClass({
     }
 });
 
-class MemberChangeEuroEuskoPage extends React.Component {
+class MemberChangeEuroMlcPage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -76,10 +76,10 @@ class MemberChangeEuroEuskoPage extends React.Component {
         var computePaymentModes = (paymentModes) => {
             // 'Euro-LIQ'
             // 'Euro-CHQ'
-            // 'Eusko-LIQ' <- Nous sommes dans un change, donc pas d'eusko en moyen de paiement...
+            // 'Mlc-LIQ' <- Nous sommes dans un change, donc pas d'mlc en moyen de paiement...
             this.setState({paymentModeList:
                            _.filter(paymentModes, (item) => {
-                                        return item.value.toLowerCase().indexOf("eusko") === -1
+                                        return item.value.toLowerCase().indexOf("mlc") === -1
                                     })
                           })
         }
@@ -174,12 +174,16 @@ class MemberChangeEuroEuskoPage extends React.Component {
                 (item, key) => {
                     switch (key) {
                         case 'member_login':
-                            if (item.startsWith("Z")) {
+                            var name = item + ' - ' + this.state.member.name
+
+                            {/*
+                                if (item.startsWith("Z")) {
                                 var name = item + ' - ' + this.state.member.name
                             }
                             else {
                                 var name = item + ' - ' + this.state.member.name
                             }
+                            */}
                             return {'label': __('N° adhérent - Nom'), order: 1, 'value': name}
                             break;
                         case 'amount':
@@ -220,20 +224,20 @@ class MemberChangeEuroEuskoPage extends React.Component {
 
         return (
             <div className="row">
-                <MemberChangeEuroEuskoForm
+                <MemberChangeEuroMlcForm
                     onValidSubmit={this.buildForm}
                     onInvalid={this.disableButton}
                     onValid={this.validFields}
-                    ref="memberchangeeuroeusko">
+                    ref="memberchangeeuromlc">
                     <fieldset>
                         <div className="form-group row member-login-row">
                             <label
                                 className="control-label col-sm-3"
-                                htmlFor="memberretrait-eusko-numerique-fullname">
+                                htmlFor="memberretrait-mlc-numerique-fullname">
                                 {__("N° Adhérent")}
                             </label>
-                            <div className="col-sm-6 memberretrait-eusko-numerique control-label text-align-left"
-                                 data-eusko="memberretrait-eusko-numerique-fullname">
+                            <div className="col-sm-6 memberretrait-mlc-numerique control-label text-align-left"
+                                 data-mlc="memberretrait-mlc-numerique-fullname">
                                 {memberLogin}
                             </div>
                             <div className="col-sm-3"></div>
@@ -241,18 +245,18 @@ class MemberChangeEuroEuskoPage extends React.Component {
                         <div className="form-group row">
                             <label
                                 className="control-label col-sm-3"
-                                htmlFor="memberchangeeuroeusko-fullname">
+                                htmlFor="memberchangeeuromlc-fullname">
                                 {__("Nom")}
                             </label>
-                            <div className="col-sm-6 memberchangeeuroeusko control-label text-align-left"
-                                 data-eusko="memberchangeeuroeusko-fullname">
+                            <div className="col-sm-6 memberchangeeuromlc control-label text-align-left"
+                                 data-mlc="memberchangeeuromlc-fullname">
                                 {memberName}
                             </div>
                             <div className="col-sm-3"></div>
                         </div>
                         <Input
                             name="amount"
-                            data-eusko="memberchangeeuroeusko-amount"
+                            data-mlc="memberchangeeuromlc-amount"
                             value=""
                             label={__("Montant")}
                             type="number"
@@ -268,11 +272,11 @@ class MemberChangeEuroEuskoPage extends React.Component {
                             <label
                                 className="control-label col-sm-3"
                                 data-required="true"
-                                htmlFor="memberchangeeuroeusko-payment_mode">
+                                htmlFor="memberchangeeuromlc-payment_mode">
                                 {__("Mode de paiement")}
                                 <span className="required-symbol">&nbsp;*</span>
                             </label>
-                            <div className="col-sm-5 memberchangeeuroeusko" data-eusko="memberchangeeuroeusko-payment_mode">
+                            <div className="col-sm-5 memberchangeeuromlc" data-mlc="memberchangeeuromlc-payment_mode">
                                 <SimpleSelect
                                     className={reactSelectizeErrorClass}
                                     ref="select"
@@ -295,7 +299,7 @@ class MemberChangeEuroEuskoPage extends React.Component {
                         <Row layout="horizontal">
                             <input
                                 name="submit"
-                                data-eusko="memberchangeeuroeusko-submit"
+                                data-mlc="memberchangeeuromlc-submit"
                                 type="submit"
                                 defaultValue={__("Enregistrer le change")}
                                 className="btn btn-success"
@@ -304,11 +308,11 @@ class MemberChangeEuroEuskoPage extends React.Component {
                             />
                         </Row>
                     </fieldset>
-                </MemberChangeEuroEuskoForm>
+                </MemberChangeEuroMlcForm>
                 <ToastContainer ref="container"
                                 toastMessageFactory={ToastMessageFactory}
                                 className="toast-top-right toast-top-right-navbar" />
-                <ModalEusko hideModal={this.hideModal}
+                <ModalMlc hideModal={this.hideModal}
                             isModalOpen={this.state.isModalOpen}
                             modalBody={this.state.modalBody}
                             modalTitle={this.props.title + " : " + __("Confirmation")}
@@ -320,18 +324,18 @@ class MemberChangeEuroEuskoPage extends React.Component {
 }
 
 // We use the same code for change billets and change numérique (except for POST url & page title)
-if (window.location.pathname.toLowerCase().indexOf("euro-eusko-numeriques") != -1) {
-    var url = getAPIBaseURL + "change-euro-eusko-numeriques/"
-    var title = __("Change € - Eusko numériques")
+if (window.location.pathname.toLowerCase().indexOf("euro-mlc-numeriques") != -1) {
+    var url = getAPIBaseURL + "change-euro-mlc-numeriques/"
+    var title = __("Change € - Mlc numériques")
 }
 else {
-    var url = getAPIBaseURL + "change-euro-eusko/"
-    var title = __("Change € - Eusko billets")
+    var url = getAPIBaseURL + "change-euro-mlc/"
+    var title = __("Change € - Mlc billets")
 }
 
 ReactDOM.render(
-    <MemberChangeEuroEuskoPage url={url} title={title} method="POST" />,
-    document.getElementById('change-euro-eusko')
+    <MemberChangeEuroMlcPage url={url} title={title} method="POST" />,
+    document.getElementById('change-euro-mlc')
 )
 
 ReactDOM.render(

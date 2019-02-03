@@ -1,6 +1,6 @@
 import {
     fetchAuth,
-    isMemberIdEusko,
+    isMemberIdMlc,
     getAPIBaseURL,
     NavbarTitle,
     SelectizeUtils
@@ -62,27 +62,36 @@ class MemberSearchPage extends React.Component {
         else if (search) {
             var searchUpperCase = search.toUpperCase()
 
-/*            if ((searchUpperCase.startsWith("E", 0) ||
-                searchUpperCase.startsWith("Z", 0)) &&
-                search.length === 6)
-                var searchString = '?login=' + searchUpperCase
-            else
-                var searchString = '?name=' + search */
+            {/*
+                if ((searchUpperCase.startsWith("E", 0) ||
+                    searchUpperCase.startsWith("Z", 0)) &&
+                    search.length === 6)
+                    var searchString = '?login=' + searchUpperCase
+                else
+                    var searchString = '?name=' + search 
+            */}
             var searchString = '?keyword=' + search
 
             // We use fetch API to ... fetch members for this login / email
             var computeSearch = (search) => {
-                var searchResults = _.chain(search)
-/*                    .map(function(item){
+                var searchResults = _.chain(search.result.pageItems)
+                    .map(function(item){
+                            return {name: item.display,
+                                    id: item.id, login: item.shortDisplay}
+                    })
+                    .sortBy(function(item){ return item.name })
+                    .value()
+
+                    {/*
+                        .map(function(item){
                         if (item.login.startsWith("E", 0))
                             return {name: item.firstname + " " + item.lastname,
                                     id: item.id, login: item.login}
 
                         else if (item.login.startsWith("Z", 0))
                             return {name: item.company, id: item.id, login: item.login}
-                    })*/
-                    .sortBy(function(item){ return item.name })
-                    .value()
+                        })
+                    */}
 
                 this.setState({searchResults: searchResults})
             }
@@ -127,7 +136,7 @@ class MemberSearchPage extends React.Component {
                                 <div className="col-md-5">
                                     <Input
                                         name="searchValue"
-                                        data-eusko="membersearch-login"
+                                        data-mlc="membersearch-login"
                                         value=""
                                         type="text"
                                         placeholder={__("Recherche d'un adhérent")}

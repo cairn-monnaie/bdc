@@ -6,7 +6,7 @@ import {
     SelectizeUtils,
 } from 'Utils'
 
-import ModalEusko from 'Modal'
+import ModalMlc from 'Modal'
 
 const {
     Input,
@@ -270,7 +270,7 @@ class MemberSubscriptionPage extends React.Component {
         if (this.state.amountInvalid)
             var spanInvalidAmount = (
                 <span className="help-block has-error-value">
-                    {__("Montant personnalisé incorrect, choisissez un montant dans la liste ou un montant supérieur à 5 €/eusko.")}
+                    {__("Montant personnalisé incorrect, choisissez un montant dans la liste ou un montant supérieur à 5 €/mlc.")}
                 </span>)
         else
             var spanInvalidAmount = null
@@ -294,11 +294,11 @@ class MemberSubscriptionPage extends React.Component {
                         <div className="form-group row member-login-row">
                             <label
                                 className="control-label col-sm-3"
-                                htmlFor="memberretrait-eusko-numerique-fullname">
+                                htmlFor="memberretrait-mlc-numerique-fullname">
                                 {__("N° Adhérent")}
                             </label>
-                            <div className="col-sm-6 memberretrait-eusko-numerique control-label text-align-left"
-                                 data-eusko="memberretrait-eusko-numerique-fullname">
+                            <div className="col-sm-6 memberretrait-mlc-numerique control-label text-align-left"
+                                 data-mlc="memberretrait-mlc-numerique-fullname">
                                 {memberLogin}
                             </div>
                             <div className="col-sm-3"></div>
@@ -310,21 +310,21 @@ class MemberSubscriptionPage extends React.Component {
                                 {__("Nom")}
                             </label>
                             <div className="col-sm-6 memberaddsubscription control-label text-align-left"
-                                 data-eusko="memberaddsubscription-fullname">
+                                 data-mlc="memberaddsubscription-fullname">
                                 {memberName}
                             </div>
                             <div className="col-sm-3"></div>
                         </div>
                         <RadioGroup
                             name="amount"
-                            data-eusko="memberaddsubscription-amount"
+                            data-mlc="memberaddsubscription-amount"
                             value={this.state.amount}
                             label={__("Montant")}
                             options={[
-                                {value: '12', label: '12 €/eusko'},
-                                {value: '24', label: '24 €/eusko'},
-                                {value: '36', label: '36 €/eusko'},
-                                {value: '5', label: __("5 €/eusko (chômeurs, minima sociaux)")},
+                                {value: '12', label: '12 €/mlc'},
+                                {value: '24', label: '24 €/mlc'},
+                                {value: '36', label: '36 €/mlc'},
+                                {value: '5', label: __("5 €/mlc (chômeurs, minima sociaux)")},
                                 {value: 'customAmount', label: __("Autre montant")},
                             ]}
                             required
@@ -332,7 +332,7 @@ class MemberSubscriptionPage extends React.Component {
                         />
                         <Input
                             name="customAmount"
-                            data-eusko="bank-deposit-customAmount"
+                            data-mlc="bank-deposit-customAmount"
                             value={this.state.customAmount ? this.state.customAmount : ""}
                             type="number"
                             placeholder={__("Montant de la cotisation")}
@@ -356,7 +356,7 @@ class MemberSubscriptionPage extends React.Component {
                                 {__("Mode de paiement")}
                                 <span className="required-symbol">&nbsp;*</span>
                             </label>
-                            <div className="col-sm-6 memberaddsubscription" data-eusko="memberaddsubscription-payment_mode">
+                            <div className="col-sm-6 memberaddsubscription" data-mlc="memberaddsubscription-payment_mode">
                                 <SimpleSelect
                                     ref="select"
                                     value={this.state.paymentMode}
@@ -378,7 +378,7 @@ class MemberSubscriptionPage extends React.Component {
                         <Row layout="horizontal">
                             <input
                                 name="submit"
-                                data-eusko="memberaddsubscription-submit"
+                                data-mlc="memberaddsubscription-submit"
                                 type="submit"
                                 defaultValue={__("Enregistrer la cotisation")}
                                 className="btn btn-success"
@@ -392,7 +392,7 @@ class MemberSubscriptionPage extends React.Component {
                 <ToastContainer ref="container"
                                 toastMessageFactory={ToastMessageFactory}
                                 className="toast-top-right toast-top-right-navbar" />
-                <ModalEusko hideModal={this.hideModal} isModalOpen={this.state.isModalOpen}
+                <ModalMlc hideModal={this.hideModal} isModalOpen={this.state.isModalOpen}
                             modalBody={this.state.modalBody}
                             modalTitle={__("Enregistrement d'une cotisation") + " - " + __("Confirmation")}
                             onValidate={this.submitForm}

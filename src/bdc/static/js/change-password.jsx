@@ -101,7 +101,7 @@ class MemberChangePasswordPage extends React.Component {
                     <fieldset>
                          <Input
                             name="old_password"
-                            data-eusko="changepassword-old_password"
+                            data-mlc="changepassword-old_password"
                             value=""
                             label={__("Mot de passe actuel")}
                             type="password"
@@ -115,7 +115,7 @@ class MemberChangePasswordPage extends React.Component {
                         />
                          <Input
                             name="new_password"
-                            data-eusko="changepassword-new_password"
+                            data-mlc="changepassword-new_password"
                             value=""
                             label={__("Nouveau mot de passe")}
                             type="password"
@@ -131,7 +131,7 @@ class MemberChangePasswordPage extends React.Component {
                         />
                         <Input
                             name="confirm_password"
-                            data-eusko="changepassword-confirm_password"
+                            data-mlc="changepassword-confirm_password"
                             value=""
                             label={__("Confirmer le nouveau mot de passe")}
                             type="password"
@@ -150,7 +150,7 @@ class MemberChangePasswordPage extends React.Component {
                         <Row layout="horizontal">
                             <input
                                 name="submit"
-                                data-eusko="changepassword-submit"
+                                data-mlc="changepassword-submit"
                                 type="submit"
                                 defaultValue={__("Enregistrer le mot de passe")}
                                 className="btn btn-success"

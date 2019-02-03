@@ -6,7 +6,7 @@ import {
     SelectizeUtils
 } from 'Utils'
 
-import ModalEusko from 'Modal'
+import ModalMlc from 'Modal'
 
 const {
     Input,
@@ -194,11 +194,11 @@ class MemberReconversionPage extends React.Component {
                         <div className="form-group row member-login-row">
                             <label
                                 className="control-label col-sm-3"
-                                htmlFor="memberretrait-eusko-numerique-fullname">
+                                htmlFor="memberretrait-mlc-numerique-fullname">
                                 {__("N° Adhérent")}
                             </label>
-                            <div className="col-sm-6 memberretrait-eusko-numerique control-label text-align-left"
-                                 data-eusko="memberretrait-eusko-numerique-fullname">
+                            <div className="col-sm-6 memberretrait-mlc-numerique control-label text-align-left"
+                                 data-mlc="memberretrait-mlc-numerique-fullname">
                                 {memberLogin}
                             </div>
                             <div className="col-sm-3"></div>
@@ -210,14 +210,14 @@ class MemberReconversionPage extends React.Component {
                                 {__("Nom")}
                             </label>
                             <div className="col-sm-6 memberreconversion control-label text-align-left"
-                                 data-eusko="memberreconversion-fullname">
+                                 data-mlc="memberreconversion-fullname">
                                 {memberName}
                             </div>
                             <div className="col-sm-3"></div>
                         </div>
                         <Input
                             name="amount"
-                            data-eusko="reconversion-amount"
+                            data-mlc="reconversion-amount"
                             value=""
                             label={__("Montant")}
                             type="number"
@@ -232,7 +232,7 @@ class MemberReconversionPage extends React.Component {
                         />
                         <Input
                             name="facture"
-                            data-eusko="reconversion-facture"
+                            data-mlc="reconversion-facture"
                             value=""
                             label={__("N° facture")}
                             type="text"
@@ -251,7 +251,7 @@ class MemberReconversionPage extends React.Component {
                                 {__("Frais de commission (5%)")}
                             </label>
                             <div className="col-sm-6 memberreconversion control-label text-align-left"
-                                 data-eusko="memberreconversion-frais">
+                                 data-mlc="memberreconversion-frais">
                                 {commisionAmount}
                             </div>
                             <div className="col-sm-3"></div>
@@ -263,7 +263,7 @@ class MemberReconversionPage extends React.Component {
                                 {__("Euros versés au prestataire (95%)")}
                             </label>
                             <div className="col-sm-6 memberreconversion control-label text-align-left"
-                                 data-eusko="memberreconversion-prestataire">
+                                 data-mlc="memberreconversion-prestataire">
                                 {prestataireAmount}
                             </div>
                             <div className="col-sm-3"></div>
@@ -273,7 +273,7 @@ class MemberReconversionPage extends React.Component {
                         <Row layout="horizontal">
                             <input
                                 name="submit"
-                                data-eusko="memberreconversion-submit"
+                                data-mlc="memberreconversion-submit"
                                 type="submit"
                                 defaultValue={__("Enregistrer la reconversion")}
                                 className="btn btn-success"
@@ -286,7 +286,7 @@ class MemberReconversionPage extends React.Component {
                 <ToastContainer ref="container"
                                 toastMessageFactory={ToastMessageFactory}
                                 className="toast-top-right toast-top-right-navbar" />
-                <ModalEusko hideModal={this.hideModal} isModalOpen={this.state.isModalOpen}
+                <ModalMlc hideModal={this.hideModal} isModalOpen={this.state.isModalOpen}
                             modalBody={this.state.modalBody}
                             modalTitle={__("Reconversion") + " - " + __("Confirmation")}
                             onValidate={this.submitForm}

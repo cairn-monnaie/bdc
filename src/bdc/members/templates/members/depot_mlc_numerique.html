@@ -6,13 +6,13 @@
     <div class="container container-mlc">
         <div class="row">
             <input type="hidden" id="member_id" value="{{ member_id }}">
-            <div class="col-lg-12" id="reconversion"></div>
+            <div class="col-lg-12" id="depot-mlc-numerique"></div>
         </div>
     </div>
 {% endblock %}
 
 {% block extra_js %}
-  {% with 'bundles/js/'|add:CURRENT_LANG|add:'.MemberReconversion.js' as memberreconversion_js_static %}
-    <script src="{% static memberreconversion_js_static %}"></script>
+  {% with 'bundles/js/'|add:CURRENT_LANG|add:'.MemberDepotMlcNumerique.js' as memberdepot_mlc_numerique_js_static %}
+    <script src="{% static memberdepot_mlc_numerique_js_static %}"></script>
   {% endwith %}
 {% endblock %}

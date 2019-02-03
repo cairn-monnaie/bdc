@@ -6,7 +6,7 @@ import {
     SelectizeUtils
 } from 'Utils'
 
-import ModalEusko from 'Modal'
+import ModalMlc from 'Modal'
 
 const {
     Input,
@@ -23,7 +23,7 @@ const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animati
 
 Formsy.addValidationRule('isPositiveNumeric', isPositiveNumeric)
 
-const MemberDepotEuskoNumeriqueForm = React.createClass({
+const MemberDepotMlcNumeriqueForm = React.createClass({
 
     mixins: [FRC.ParentContextMixin],
 
@@ -36,7 +36,7 @@ const MemberDepotEuskoNumeriqueForm = React.createClass({
             <Formsy.Form
                 className={this.getLayoutClassName()}
                 {...this.props}
-                ref="memberdepot-eusko-numerique"
+                ref="memberdepot-mlc-numerique"
             >
                 {this.props.children}
             </Formsy.Form>
@@ -44,7 +44,7 @@ const MemberDepotEuskoNumeriqueForm = React.createClass({
     }
 });
 
-class MemberDepotEuskoNumeriquePage extends React.Component {
+class MemberDepotMlcNumeriquePage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -175,20 +175,20 @@ class MemberDepotEuskoNumeriquePage extends React.Component {
 
         return (
             <div className="row">
-                <MemberDepotEuskoNumeriqueForm
+                <MemberDepotMlcNumeriqueForm
                     onValidSubmit={this.buildForm}
                     onInvalid={this.disableButton}
                     onValid={this.enableButton}
-                    ref="memberdepot-eusko-numerique">
+                    ref="memberdepot-mlc-numerique">
                     <fieldset>
                         <div className="form-group row member-login-row">
                             <label
                                 className="control-label col-sm-3"
-                                htmlFor="memberretrait-eusko-numerique-fullname">
+                                htmlFor="memberretrait-mlc-numerique-fullname">
                                 {__("N° Adhérent")}
                             </label>
-                            <div className="col-sm-6 memberretrait-eusko-numerique control-label text-align-left"
-                                 data-eusko="memberretrait-eusko-numerique-fullname">
+                            <div className="col-sm-6 memberretrait-mlc-numerique control-label text-align-left"
+                                 data-mlc="memberretrait-mlc-numerique-fullname">
                                 {memberLogin}
                             </div>
                             <div className="col-sm-3"></div>
@@ -196,18 +196,18 @@ class MemberDepotEuskoNumeriquePage extends React.Component {
                         <div className="form-group row">
                             <label
                                 className="control-label col-sm-3"
-                                htmlFor="memberdepot-eusko-numerique-fullname">
+                                htmlFor="memberdepot-mlc-numerique-fullname">
                                 {__("Nom")}
                             </label>
-                            <div className="col-sm-6 memberdepot-eusko-numerique control-label text-align-left"
-                                 data-eusko="memberdepot-eusko-numerique-fullname">
+                            <div className="col-sm-6 memberdepot-mlc-numerique control-label text-align-left"
+                                 data-mlc="memberdepot-mlc-numerique-fullname">
                                 {memberName}
                             </div>
                             <div className="col-sm-3"></div>
                         </div>
                         <Input
                             name="amount"
-                            data-eusko="depot-eusko-numerique-amount"
+                            data-mlc="depot-mlc-numerique-amount"
                             value=""
                             label={__("Montant")}
                             type="number"
@@ -225,7 +225,7 @@ class MemberDepotEuskoNumeriquePage extends React.Component {
                         <Row layout="horizontal">
                             <input
                                 name="submit"
-                                data-eusko="memberdepot-eusko-numerique-submit"
+                                data-mlc="memberdepot-mlc-numerique-submit"
                                 type="submit"
                                 defaultValue={__("Enregistrer")}
                                 className="btn btn-success"
@@ -234,11 +234,11 @@ class MemberDepotEuskoNumeriquePage extends React.Component {
                             />
                         </Row>
                     </fieldset>
-                </MemberDepotEuskoNumeriqueForm>
+                </MemberDepotMlcNumeriqueForm>
                 <ToastContainer ref="container"
                                 toastMessageFactory={ToastMessageFactory}
                                 className="toast-top-right toast-top-right-navbar" />
-                <ModalEusko hideModal={this.hideModal} isModalOpen={this.state.isModalOpen}
+                <ModalMlc hideModal={this.hideModal} isModalOpen={this.state.isModalOpen}
                             modalBody={this.state.modalBody}
                             modalTitle={__("Dépôt sur le compte") + " - " + __("Confirmation")}
                             onValidate={this.submitForm}
@@ -250,8 +250,8 @@ class MemberDepotEuskoNumeriquePage extends React.Component {
 
 
 ReactDOM.render(
-    <MemberDepotEuskoNumeriquePage url={getAPIBaseURL + "depot-eusko-numerique/"} method="POST" />,
-    document.getElementById('depot-eusko-numerique')
+    <MemberDepotMlcNumeriquePage url={getAPIBaseURL + "depot-mlc-numerique/"} method="POST" />,
+    document.getElementById('depot-mlc-numerique')
 )
 
 ReactDOM.render(

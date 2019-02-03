@@ -17,5 +17,5 @@ class BaseTestCase(unittest.TestCase):
         self.webdriver.close()
 
     def fill_input(self, input_name, input_value):
-        field = self.webdriver.find_element_by_xpath("//input[@data-eusko-input='{}']".format(input_name))
+        field = self.webdriver.find_element_by_xpath("//input[@data-mlc-input='{}']".format(input_name))
         field.send_keys(input_value)

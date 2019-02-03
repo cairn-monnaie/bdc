@@ -23,8 +23,8 @@ def add_subscription(request, member_id):
 
 
 @login_required
-def change_euro_eusko(request, member_id):
-    return render(request, 'members/change_euro_eusko.html', {'member_id': member_id})
+def change_euro_mlc(request, member_id):
+    return render(request, 'members/change_euro_mlc.html', {'member_id': member_id})
 
 
 @login_required
@@ -33,10 +33,10 @@ def reconversion(request, member_id):
 
 
 @login_required
-def depot_eusko_numerique(request, member_id):
-    return render(request, 'members/depot_eusko_numerique.html', {'member_id': member_id})
+def depot_mlc_numerique(request, member_id):
+    return render(request, 'members/depot_mlc_numerique.html', {'member_id': member_id})
 
 
 @login_required
-def retrait_eusko_numerique(request, member_id):
-    return render(request, 'members/retrait_eusko_numerique.html', {'member_id': member_id})
+def retrait_mlc_numerique(request, member_id):
+    return render(request, 'members/retrait_mlc_numerique.html', {'member_id': member_id})

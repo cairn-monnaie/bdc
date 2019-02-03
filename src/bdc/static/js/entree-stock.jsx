@@ -163,7 +163,7 @@ var EntreeStockPage = React.createClass({
                     <div className="col-md-12 margin-top">
                         <input
                             name="submit"
-                            data-eusko="entree-stock-submit"
+                            data-mlc="entree-stock-submit"
                             type="submit"
                             defaultValue={__("Enregistrer")}
                             className="btn btn-success"
