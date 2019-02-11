@@ -1,4 +1,9 @@
-version: '2'
+version: '3'
+
+networks:
+  mlc_net:
+    external:
+      name: mlc_net
 
 services:
   bdc:
@@ -18,7 +23,4 @@ services:
     networks:
       - mlc_net
 
-networks:
-  mlc_net:
-    external:
-      name: api_mvt_sol_mlc_net
+
