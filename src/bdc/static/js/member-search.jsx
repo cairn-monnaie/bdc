@@ -76,8 +76,12 @@ class MemberSearchPage extends React.Component {
             var computeSearch = (search) => {
                 var searchResults = _.chain(search.result.pageItems)
                     .map(function(item){
-                            return {name: item.display,
-                                    id: item.id, login: item.shortDisplay}
+                            {/* 
+                                @WARNING : item properties can be display and shortDisplay instead of username and name
+                                This depends on the Cyclos configuration
+                            */}
+                            return {name: item.name,
+                                    id: item.id, login: item.username}
                     })
                     .sortBy(function(item){ return item.name })
                     .value()

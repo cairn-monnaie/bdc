@@ -29,41 +29,43 @@ const MemberShow = React.createClass({
         if (!this.state.member) {
             return null
         }
-//        moment.locale(getCurrentLang)
-//        var dateEndSub = moment.unix(this.state.member.datefin).format('DD MMMM YYYY');
-//
-//        // Whether or not, we have an up-to-date member subscription
-//        if (moment.unix(this.state.member.datefin) > moment()) {
-//            var memberStatus = (
-//                <div className="font-member-status">
-//                    <span className="glyphicon glyphicon-ok member-status-ok"></span>
-//                    <span className="member-status-text" data-mlc="member-show-status">
-//                        {__("À jour")}
-//                    </span>
-//                    <span className="member-status-date">({dateEndSub})</span>
-//                </div>
-//            )
-//
-//            var memberStatusUpToDate = true
-//        }
-//        else {
-//            var memberStatus = (
-//                <div className="font-member-status">
-//                    <span className="glyphicon glyphicon-remove member-status-nok"></span>
-//                    <span className="member-status-text" data-mlc="member-show-status">
-//                        {__("Pas à jour")}
-//                    </span>
-//                    <span className="member-status-date">({dateEndSub})</span>
-//                </div>
-//            )
-//
-//            var memberStatusUpToDate = false
-//        }
-//
-//        // Whether or not, we have a business member or a individual
-//        if (this.state.member.type.toLowerCase() != 'particulier') {
-//            // We have a business member
-//
+        {/*    
+               moment.locale(getCurrentLang)
+        var dateEndSub = moment.unix(this.state.member.datefin).format('DD MMMM YYYY');
+
+        // Whether or not, we have an up-to-date member subscription
+        if (moment.unix(this.state.member.datefin) > moment()) {
+            var memberStatus = (
+                <div className="font-member-status">
+                    <span className="glyphicon glyphicon-ok member-status-ok"></span>
+                    <span className="member-status-text" data-mlc="member-show-status">
+                        {__("À jour")}
+                    </span>
+                    <span className="member-status-date">({dateEndSub})</span>
+                </div>
+            )
+
+            var memberStatusUpToDate = true
+        }
+        else {
+            var memberStatus = (
+                <div className="font-member-status">
+                    <span className="glyphicon glyphicon-remove member-status-nok"></span>
+                    <span className="member-status-text" data-mlc="member-show-status">
+                        {__("Pas à jour")}
+                    </span>
+                    <span className="member-status-date">({dateEndSub})</span>
+                </div>
+            )
+
+            var memberStatusUpToDate = false
+        }
+
+        // Whether or not, we have a business member or a individual
+        if (this.state.member.type.toLowerCase() != 'particulier') {
+            // We have a business member
+            */}
+
             var memberName = (
                 <div className="col-sm-4">
                     <span className="member-show-societe">
@@ -126,94 +128,95 @@ const MemberShow = React.createClass({
                     </div>
                 )
 //            }
-//            // aucune opération n'est accessible
-//            else {
-//                var memberActions = (
-//                    <div className="row">
-//                    </div>
-//                )
-//            }
-//        }
-//        else {
-//            // We have a individual member
-//            var memberName = (
-//                <div className="col-sm-4" >
-//                    <span className="member-show-civility">{titleCase(this.state.member.civility_id) + " "}</span>
-//                    <span data-mlc="member-show-fullname">
-//                        {this.state.member.firstname + " " + this.state.member.lastname}
-//                    </span>
-//                </div>
-//            )
-//
-//            // Whether or not, we have a up-to-date member subscription
-//            if (memberStatusUpToDate)
-//            {
-//                var changeNumerique = null
-//                var memberActionRetraitCompte = null
-//                if (this.state.hasAcceptedCGU) {
-//                    var changeNumerique = (
-//                        <a href={"/members/change/euro-mlc-numeriques/" + this.state.member.id}
-//                           className="btn btn-default col-sm-offset-1">
-//                           {__("Chargement du compte")}
-//                        </a>
-//                    )
-//
-//                    var memberActionRetraitCompte = (
-//                        <a href={"/members/retrait-mlc-numerique/" + this.state.member.id}
-//                           className="btn btn-default">
-//                            {__("Retrait d'mlc du compte")}
-//                        </a>
-//                    )
-//                }
-//
-//                var memberActions = (
-//                    <div>
-//                        <div className="row member-show-div-margin-left">
-//                            <a href={"/members/change/euro-mlc/" + this.state.member.id}
-//                               className="btn btn-info">
-//                               {__("Change billets")}
-//                            </a>
-//                            {' '}
-//                            {changeNumerique}
-//                            {' '}
-//                            <a href={"/members/subscription/add/" + this.state.member.id}
-//                               className="btn btn-default col-sm-offset-1">
-//                                {__("Cotisation")}
-//                            </a>
-//                        </div>
-//                        <div className="row member-show-div-margin-left margin-top">
-//                            {memberActionRetraitCompte}
-//                        </div>
-//                    </div>
-//                )
-//            }
-//            // "Cotisation" (bouton primaire)
-//            else {
-//                var memberActions = (
-//                    <div className="row member-show-div-margin-left">
-//                        <a href={"/members/subscription/add/" + this.state.member.id} className="btn btn-info">
-//                            {__("Cotisation")}
-//                        </a>
-//                    </div>
-//                )
-//            }
-//        }
-//
-//        if (this.state.member.address) {
-//            var memberAddress = (
-//                <span data-mlc="member-show-address">
-//                    {this.state.member.address + "  ―  " + this.state.member.zip + " " + this.state.member.town}
-//                </span>
-//            )
-//        }
-//        else {
-//            var memberAddress = (
-//                <span data-mlc="member-show-address">
-//                    {this.state.member.zip + " " + this.state.member.town}
-//                </span>
-//            )
-//        }
+                {/*
+                 // aucune opération n'est accessible
+            else {
+                var memberActions = (
+                    <div className="row">
+                    </div>
+                )
+            }
+        }
+        else {
+            // We have a individual member
+            var memberName = (
+                <div className="col-sm-4" >
+                    <span className="member-show-civility">{titleCase(this.state.member.civility_id) + " "}</span>
+                    <span data-mlc="member-show-fullname">
+                        {this.state.member.firstname + " " + this.state.member.lastname}
+                    </span>
+                </div>
+            )
 
+            // Whether or not, we have a up-to-date member subscription
+            if (memberStatusUpToDate)
+            {
+                var changeNumerique = null
+                var memberActionRetraitCompte = null
+                if (this.state.hasAcceptedCGU) {
+                    var changeNumerique = (
+                        <a href={"/members/change/euro-mlc-numeriques/" + this.state.member.id}
+                           className="btn btn-default col-sm-offset-1">
+                           {__("Chargement du compte")}
+                        </a>
+                    )
+
+                    var memberActionRetraitCompte = (
+                        <a href={"/members/retrait-mlc-numerique/" + this.state.member.id}
+                           className="btn btn-default">
+                            {__("Retrait d'mlc du compte")}
+                        </a>
+                    )
+                }
+
+                var memberActions = (
+                    <div>
+                        <div className="row member-show-div-margin-left">
+                            <a href={"/members/change/euro-mlc/" + this.state.member.id}
+                               className="btn btn-info">
+                               {__("Change billets")}
+                            </a>
+                            {' '}
+                            {changeNumerique}
+                            {' '}
+                            <a href={"/members/subscription/add/" + this.state.member.id}
+                               className="btn btn-default col-sm-offset-1">
+                                {__("Cotisation")}
+                            </a>
+                        </div>
+                        <div className="row member-show-div-margin-left margin-top">
+                            {memberActionRetraitCompte}
+                        </div>
+                    </div>
+                )
+            }
+            // "Cotisation" (bouton primaire)
+            else {
+                var memberActions = (
+                    <div className="row member-show-div-margin-left">
+                        <a href={"/members/subscription/add/" + this.state.member.id} className="btn btn-info">
+                            {__("Cotisation")}
+                        </a>
+                    </div>
+                )
+            }
+        }
+
+        if (this.state.member.address) {
+            var memberAddress = (
+                <span data-mlc="member-show-address">
+                    {this.state.member.address + "  ―  " + this.state.member.zip + " " + this.state.member.town}
+                </span>
+            )
+        }
+        else {
+            var memberAddress = (
+                <span data-mlc="member-show-address">
+                    {this.state.member.zip + " " + this.state.member.town}
+                </span>
+            )
+        }
+    */}
         var memberData = (
             <div className="row">
                 <div className="panel panel-primary member-show-panel">

@@ -215,7 +215,7 @@ var CaisseEuro = React.createClass({
                             <a href="/manager/bank-deposit" data-mlc="bank-deposit" className="btn btn-info">{__("Dépôt en banque")}</a>
                         </div>
                         <div className="col-md-offset-2 col-md-2 col-sm-4">
-                            <a href="/manager/cash-deposit" data-mlc="cash-deposit" className="btn btn-default">{__("Remise de monnaie à Euskal Moneta")}</a>
+                            <a href="/manager/cash-deposit" data-mlc="cash-deposit" className="btn btn-default">{__("Remise de monnaie à l'Association")}</a>
                         </div>
                     </div>
                 </div>

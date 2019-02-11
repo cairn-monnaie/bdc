@@ -214,7 +214,7 @@ class NavbarTitle extends React.Component {
             return <a className="navbar-brand">{this.props.title}</a>
         }
         else {
-            return <a className="navbar-brand">Euskal Moneta</a>
+            return <a className="navbar-brand">La Monnaie Locale</a>
         }
     }
 }
