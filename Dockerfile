@@ -37,7 +37,7 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
 # Install of nodejs / npm is ok now, we can install our dependencies
-RUN npm install \
+RUN rm -rf package-lock.json node_modules && npm cache clean --force && npm install \
   && npm run build
 
 EXPOSE 8000
