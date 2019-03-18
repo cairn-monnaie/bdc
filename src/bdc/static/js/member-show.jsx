@@ -231,6 +231,12 @@ const MemberShow = React.createClass({
                             </div>*/}
                         </div>
                         <div className="form-group row">
+                            <label className="control-label col-sm-2">{__("Email")}</label>
+                            <div className="col-sm-4">
+                                <span data-mlc="member-show-login">{this.state.member.email}</span>
+                            </div>
+                        </div>
+                        <div className="form-group row">
                             <label className="control-label col-sm-2">{__("Nom")}</label>
                             {memberName}
                             <div className="col-sm-6">

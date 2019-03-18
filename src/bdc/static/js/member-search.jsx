@@ -80,8 +80,8 @@ class MemberSearchPage extends React.Component {
                                 @WARNING : item properties can be display and shortDisplay instead of username and name
                                 This depends on the Cyclos configuration
                             */}
-                            return {name: item.name,
-                                    id: item.id, login: item.username}
+                            return {name: item.name, email: item.email,
+                                    id: item.id, login: item.username, accountNumber: item.accountNumber}
                     })
                     .sortBy(function(item){ return item.name })
                     .value()
@@ -118,6 +118,7 @@ class MemberSearchPage extends React.Component {
             var searchResultsTable = (
                 <BootstrapTable data={this.state.searchResults} striped={true} hover={true} selectRow={selectRowProp}>
                     <TableHeaderColumn dataField="login" isKey={true} width="100px">{__("Login")}</TableHeaderColumn>
+                    <TableHeaderColumn dataField="email">{__("Email")}</TableHeaderColumn>
                     <TableHeaderColumn dataField="name">{__("Nom")}</TableHeaderColumn>
                 </BootstrapTable>
             )
