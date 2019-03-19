@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  bdc:
+    environment:
+      - DJANGO_DEBUG=True
+      - TEST=False
+      - NODE_ENV=prod
+

@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  bdc:
+    volumes:
+      - ./src/bdc:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - DJANGO_DEBUG=True
+      - TEST=False
+      - NODE_ENV=dev
+
+
