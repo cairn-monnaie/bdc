@@ -173,6 +173,7 @@ var getCurrentLang = document.documentElement.lang
 var getCSRFToken = window.config.getCSRFToken
 var getAPIBaseURL = window.config.getAPIBaseURL
 
+
 var Flag = React.createClass({
     render() {
         // We want to hide the flag showing the current lang

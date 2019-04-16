@@ -38,19 +38,19 @@ class BDCAuthBackend(object):
             log.critical('Identifiant Bureau de Change ou Mot de passe invalide. Réessayez.')
             raise PermissionDenied()
 
-#        try:
-#            r_groups = requests.get('{}{}'.format(settings.API_INTERNAL_URL,
-#                                                  'verify-usergroup/?api_key={}&username={}&usergroup=operateurs_bdc'
-#                                                  .format(auth_token, username)))
-#
-#            if not r_groups.status_code == requests.codes.ok:
-#                log.critical('status_code: {} - content: {}'.format(r_groups.status_code, r_groups.content))
-#                log.critical('Identifiant Bureau de Change ou Mot de passe invalide.')
-#                raise PermissionDenied()
-#        except requests.exceptions.RequestException as e:
-#            log.critical('BDCAuthBackend - RequestException: {}'.format(e))
-#            log.critical('Identifiant Bureau de Change ou Mot de passe invalide. Réessayez.')
-#            raise PermissionDenied()
+        try:
+            r_groups = requests.get('{}{}'.format(settings.API_INTERNAL_URL,
+                                                  'verify-usergroup/?api_key={}&username={}&usergroup=operateurs_bdc'
+                                                  .format(auth_token, username)))
+
+            if not r_groups.status_code == requests.codes.ok:
+                log.critical('status_code: {} - content: {}'.format(r_groups.status_code, r_groups.content))
+                log.critical('Identifiant Bureau de Change ou Mot de passe invalide.')
+                raise PermissionDenied()
+        except requests.exceptions.RequestException as e:
+            log.critical('BDCAuthBackend - RequestException: {}'.format(e))
+            log.critical('Identifiant Bureau de Change ou Mot de passe invalide. Réessayez.')
+            raise PermissionDenied()
 
         user, created = User.objects.get_or_create(username=username)
         return user

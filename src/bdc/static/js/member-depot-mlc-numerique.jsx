@@ -54,6 +54,8 @@ class MemberDepotMlcNumeriquePage extends React.Component {
             canSubmit: false,
             memberID: document.getElementById("member_id").value,
             member: undefined,
+            validAmount: false,
+            account: undefined,
             isModalOpen: false,
             formData: undefined,
             modalBody: undefined
@@ -64,6 +66,35 @@ class MemberDepotMlcNumeriquePage extends React.Component {
             this.setState({member: member})
         }
         fetchAuth(getAPIBaseURL + "members/" + this.state.memberID + "/", 'get', computeMemberData)
+
+        var computeAccountData = (account) => {
+            this.setState({account: account})
+        }
+        fetchAuth(getAPIBaseURL + "available-electronic-mlc/", 'get', computeAccountData)
+
+    }
+
+    onChangeAmount = (event, amount) => {
+        // Input change amount
+
+        if (amount) {
+            // We use fetch API to fetch money safe account balance
+            var getAvailableAmount = (account) => {
+                if(account.balance < amount){
+                    this.setState({validAmount: false}, this.validateForm)
+                }else{
+                    this.setState({validAmount: true}, this.validateForm)
+                }
+            }
+            fetchAuth(getAPIBaseURL + "available-electronic-mlc/", 'get', getAvailableAmount)
+        }
+    }
+
+    validateForm = () => {
+        if (this.state.validAmount)
+            this.enableButton()
+        else
+            this.disableButton()
     }
 
     enableButton = () => {
@@ -72,10 +103,6 @@ class MemberDepotMlcNumeriquePage extends React.Component {
 
     disableButton = () => {
         this.setState({canSubmit: false})
-    }
-
-    onChangeAmount = (field, value) => {
-        // nothing here
     }
 
     submitForm = () => {
@@ -173,6 +200,11 @@ class MemberDepotMlcNumeriquePage extends React.Component {
             var memberLogin = null
         }
 
+        if (this.state.account) {
+            var amountLabel = "Montant (max. " + this.state.account.balance + ")"
+        }
+
+
         return (
             <div className="row">
                 <MemberDepotMlcNumeriqueForm
@@ -209,11 +241,12 @@ class MemberDepotMlcNumeriquePage extends React.Component {
                             name="amount"
                             data-mlc="depot-mlc-numerique-amount"
                             value=""
-                            label={__("Montant")}
+                            label={amountLabel}
                             type="number"
                             placeholder={__("Montant du dépot")}
                             validations="isPositiveNumeric"
                             onChange={this.onChangeAmount}
+                            onBlur={this.validateForm}
                             validationErrors={{
                                 isPositiveNumeric: __("Montant invalide.")
                             }}
