@@ -57,7 +57,7 @@ class MemberChangeEuroMlcPage extends React.Component {
             canSubmit: false,
             validFields: false,
             validCustomFields: false,
-            validAmount: false,
+            validAmount: true,
             memberID: document.getElementById("member_id").value,
             member: undefined,
             account: undefined,
@@ -96,8 +96,7 @@ class MemberChangeEuroMlcPage extends React.Component {
 
     onChangeAmount = (event, amount) => {
         // Input change amount
-
-        if (amount) {
+        if (window.location.pathname.toLowerCase().indexOf("euro-mlc-numeriques") != -1) {
             // We use fetch API to fetch money safe account balance
             var getAvailableAmount = (account) => {
                 if(account.balance < amount){
