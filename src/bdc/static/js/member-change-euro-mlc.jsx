@@ -57,10 +57,8 @@ class MemberChangeEuroMlcPage extends React.Component {
             canSubmit: false,
             validFields: false,
             validCustomFields: false,
-            validAmount: true,
             memberID: document.getElementById("member_id").value,
             member: undefined,
-            account: undefined,
             paymentMode: '',
             paymentModeList: '',
             isModalOpen: false,
@@ -75,11 +73,6 @@ class MemberChangeEuroMlcPage extends React.Component {
         }
         fetchAuth(getAPIBaseURL + "members/" + this.state.memberID + "/", 'get', computeMemberData)
 
-        var computeAccountData = (account) => {
-            this.setState({account: account})
-        }
-        fetchAuth(getAPIBaseURL + "available-electronic-mlc/", 'get', computeAccountData)
-        
         // Get payment_modes
         var computePaymentModes = (paymentModes) => {
             // 'Euro-LIQ'
@@ -92,21 +85,6 @@ class MemberChangeEuroMlcPage extends React.Component {
                           })
         }
         fetchAuth(getAPIBaseURL + "payment-modes/", 'get', computePaymentModes)
-    }
-
-    onChangeAmount = (event, amount) => {
-        // Input change amount
-        if (window.location.pathname.toLowerCase().indexOf("euro-mlc-numeriques") != -1) {
-            // We use fetch API to fetch money safe account balance
-            var getAvailableAmount = (account) => {
-                if(account.balance < amount){
-                    this.setState({validAmount: false}, this.validateForm)
-                }else{
-                    this.setState({validAmount: true}, this.validateForm)
-                }
-            }
-            fetchAuth(getAPIBaseURL + "available-electronic-mlc/", 'get', getAvailableAmount)
-        }
     }
 
     // paymentMode
@@ -131,7 +109,7 @@ class MemberChangeEuroMlcPage extends React.Component {
         {
             this.setState({validCustomFields: true})
 
-            if (this.state.validFields && this.state.validAmount)
+            if (this.state.validFields)
                 this.enableButton()
             else
                 this.disableButton()
@@ -246,16 +224,6 @@ class MemberChangeEuroMlcPage extends React.Component {
             var memberLogin = null
         }
 
-        if (this.state.account) {
-            if (window.location.pathname.toLowerCase().indexOf("euro-mlc-numeriques") != -1) {
-                var amountLabel = "Montant (max. " + this.state.account.balance + ")"
-            }else{
-                var amountLabel = "Montant"
-            }
-        }else{
-            var amountLabel = "Montant"
-        }
-
         return (
             <div className="row">
                 <MemberChangeEuroMlcForm
@@ -292,10 +260,8 @@ class MemberChangeEuroMlcPage extends React.Component {
                             name="amount"
                             data-mlc="memberchangeeuromlc-amount"
                             value=""
-                            label={amountLabel}
+                            label={__("Montant")}
                             type="number"
-                            onChange={this.onChangeAmount}
-                            onBlur={this.validateForm}
                             placeholder={__("Montant du change")}
                             validations="isPositiveNumeric"
                             validationErrors={{

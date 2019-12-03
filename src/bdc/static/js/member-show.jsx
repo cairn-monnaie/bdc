@@ -114,11 +114,11 @@ const MemberShow = React.createClass({
                             {' '}
                             {changeNumerique}
                             {' '}
-                            {/* @WARNING : RECONVERSION skipped for now
+                            {/*
                             <a href={"/members/reconversion/" + this.state.member.id}
                                className="btn btn-info col-sm-offset-1">
-                               {__("Reconversion")}
-                            </a> */}
+                               {__("Reconversion billets")}
+                            </a> */} 
                         </div>
                         <div className="row member-show-div-margin-left margin-top">
                             {memberActionDepotCompte}
@@ -143,7 +143,7 @@ const MemberShow = React.createClass({
                 <div className="col-sm-4" >
                     <span className="member-show-civility">{titleCase(this.state.member.civility_id) + " "}</span>
                     <span data-mlc="member-show-fullname">
-                        {this.state.member.firstname + " " + this.state.member.lastname}
+                        {this.state.member.name}
                     </span>
                 </div>
             )
