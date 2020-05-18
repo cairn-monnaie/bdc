@@ -14,6 +14,7 @@ const MemberShow = React.createClass({
             hasAcceptedCGU: false,
             memberID: document.getElementById("member_id").value,
             member: undefined,
+            accounts: undefined,
         }
 
         // Get member data
@@ -22,11 +23,18 @@ const MemberShow = React.createClass({
             this.setState({member: member}) //, hasAcceptedCGU: hasAcceptedCGU})
         }
         fetchAuth(this.props.url + this.state.memberID + '/', 'get', computeMemberData)
+
+        var computeAccountsData = (accounts) => {
+            this.setState({accounts: accounts})
+        }
+        fetchAuth(getAPIBaseURL + "user-accounts/" + this.state.memberID + '/' , 'get', computeAccountsData)
+
     },
 
     render() {
         var memberData = null
-        if (!this.state.member) {
+
+        if (!this.state.member || !this.state.accounts) {
             return null
         }
         {/*    
@@ -48,6 +56,14 @@ const MemberShow = React.createClass({
             var memberStatusUpToDate = true
         }
         else {
+            var memberBalance = (
+                <div className="col-sm-4">
+                    <span className="member-show-societe">
+                        {this.state.member.name}
+                    </span>
+                </div>
+            )
+
             var memberStatus = (
                 <div className="font-member-status">
                     <span className="glyphicon glyphicon-remove member-status-nok"></span>
@@ -242,6 +258,13 @@ const MemberShow = React.createClass({
                             <div className="col-sm-6">
                             </div>
                         </div>
+                        <div className="form-group row">
+                            <label className="control-label col-sm-2">{__("Solde")}</label>
+                            <div className="col-sm-4">
+                                <span data-mlc="member-show-login">{this.state.accounts[0].status.balance}</span>
+                            </div>
+                        </div>
+
                         {/*                        <div className="form-group row">
                             <label className="control-label col-sm-2">{__("Adresse postale")}</label>
                             <div className="col-sm-8" >
